@@ -1,0 +1,174 @@
+// // // // // // // // // // // // // //
+//
+//      @Mixins & @Placeholders
+//
+// // // // // // // // // // // // // // 
+
+
+
+// ==================================================
+//      mixins
+// ==================================================
+
+
+@mixin transition($time: 0.3s, $what: all, $type: ease-in-out, $delay: 0s) {
+    -webkit-transition: $what $time $type $delay;
+       -moz-transition: $what $time $type $delay;
+         -o-transition: $what $time $type $delay;
+            transition: $what $time $type $delay;
+}
+@mixin benz-transition($time: 400s) {
+    @include transition($time, all, cubic-bezier(0.700, 0.110, 0.890, 0.605));
+}
+
+@mixin transitions($trans...) {
+    -webkit-transition: $trans;
+       -moz-transition: $trans;
+         -o-transition: $trans;
+            transition: $trans;
+}
+
+@mixin transform($type) {
+    -webkit-transform: $type;
+       -moz-transform: $type;
+        -ms-transform: $type; 
+            transform: $type;
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+      @content; 
+    }
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+    @-o-keyframes #{$name} {
+      @content;
+    }
+    @keyframes #{$name} {
+      @content;
+    } 
+}
+
+@mixin animation($animation) {
+    -webkit-animation: $animation;
+       -moz-animation: $animation;
+         -o-animation: $animation;
+            animation: $animation; 
+}
+
+@mixin cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin center($left: 50%, $x: -50%) {
+    position: absolute;
+    left: $left;
+    @include transform(translateX($x));
+}
+
+@mixin middle($top: 50%, $y: -50%) {
+    position: absolute;
+    top: $top;
+    @include transform(translateY($y));
+}
+
+@mixin middleR($right: 0, $top: 50%, $y: -50%) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    @include transform(translateY($y));
+}
+
+@mixin middleL($left: 0, $top: 50%, $y: -50%) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    @include transform(translateY($y));
+}
+
+@mixin abs-middle($top: 50%, $left: 50%) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    @include transform(translate(-50%, -50%));
+}
+
+
+@mixin mediaMin($min) {
+    @media screen and (min-width: $min) {
+        @content;
+    }
+}
+
+@mixin mediaMax($max) {
+    @media screen and (max-width: $max) {
+        @content;
+    }
+}
+
+@mixin mediaMinMax($min, $max) {
+    @media screen and (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
+
+// ==================================================
+//      placeholders
+// ==================================================
+
+%transition {
+    @include transition(0.3s, all, ease-in-out);
+}
+
+%benz-transition {
+    @include transition(400ms, all, cubic-bezier(0.700, 0.110, 0.890, 0.605));
+}
+
+%cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+%center {
+    @include center;
+}
+
+%abs-middle {
+    @include abs-middle;
+}
+
+%middle {
+    @include middle;
+}
+
+%middleR {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    @include transform(translateY(-50%));
+}
+
+%middleL {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    @include transform(translateY(-50%));
+}
+
+
+// ==================================================
+//      animations
+// ==================================================
+@include keyframes(grow) {
+    0%   { @include transform(scale(1));   }
+    50%  { @include transform(scale(1.1)); }
+    100% { @include transform(scale(1));   }
+}

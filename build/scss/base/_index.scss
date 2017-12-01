@@ -1,0 +1,43 @@
+// // // // // // // // // //
+//
+//      Base
+//
+// // // // // // // // // //
+
+html,
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    margin: 0;
+    
+    .hidden {
+        display: none;
+    }
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    min-width: 320px;
+    padding-bottom: 150px;
+}
+
+*, 
+*:before, 
+*:after {
+    box-sizing: inherit;
+}
+
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.clearfix {
+    clear: both;
+}
