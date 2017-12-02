@@ -9,8 +9,8 @@
     color: white;
     position: relative;
     min-height: 100vh;
+    font-family: 'Raleway', sans-serif;
     overflow: auto;
-    // border: 1px solid blue;
     nav {
         position: relative;
         z-index: 1;
@@ -21,11 +21,17 @@
     }
     .headline {
         @extend %center;
-        top: 100px;
+        top: 10px;
         width: 100%;
         text-align: center;
         pointer-events: none;
         z-index: 1;
+        @include mediaMin($iphone6) {
+            top: 50px;
+        }
+        @include mediaMin($iphone6P) {
+            top: 100px;
+        }
         .me-overview {
             font-size: 64px;
         }
@@ -38,17 +44,45 @@
     }   
     .checkout-btn {
         @extend %center;
-        bottom: 100px;
+        bottom: 20px;
         color: #e69839;
-        background-color: white;
+        background-color: rgba(white,0.6); 
         font-size: 24px;
         border-radius: 8px;
         padding: 10px;
         padding-right: 60px;
         cursor: pointer;
+        overflow: hidden;
         z-index: 1;
+        @include mediaMin($iphone6) {
+            bottom: 100px;
+        }
+        &::before {
+            @include benz-transition(0.4s);
+            @include transform(rotate(20deg));
+            background-color: rgba(white,0.4);
+            position: absolute;
+            left: -90%;
+            top: -200%;
+            content: '';
+            width: 110%;
+            height: 200px;
+            z-index: -1;
+        }
+        &:hover {
+            &::before {
+                left: 0;
+                top: -100px;
+            }
+            svg {
+                @include transform(translateY(-50%) rotate(0));
+                fill: #e69839;
+            }
+        }
         svg {
+            @include transition(0.4s);
             @include middleR(15px);
+            @include transform(translateY(-50%) rotate(-90deg));
             width: 30px;
             height: 30px;
         }

@@ -4,3 +4,27 @@
 //
 // // // // // // // // // //
 
+.boxes {
+    width: 90%;
+    border: 1px solid blue;
+}
+
+.box {
+    @include transition(0.5s);
+    background-color: rgba(limegreen, 0.7);
+    position: relative;
+    float: left;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    opacity: 0;
+    top: 100px;
+    &.slide-in {
+        top: 0;
+        opacity: 1;
+    }
+    &:nth-child(odd) {
+        background-color: rgba(rgb(12, 120, 209), 0.7);
+        @include transition(0.8s);
+    }
+}

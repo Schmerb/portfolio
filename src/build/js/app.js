@@ -9,7 +9,12 @@ const state = {
 
 // SELECTOR CONSTANTS
 
+const CHECKOUT_BTN = '.checkout-btn';    
 
+// Sections
+const ABOUT_ME = '#about-me';
+const PROJECTS = '#projects';
+const CONTACT  = '#contact';
 
 
 
@@ -117,18 +122,60 @@ function checkForTouch() {
     }, false);
 }
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// Checks if an element is visible in order to slide
+// it into place on scroll
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function slideIntoPlace() {
+    const win     = $(window);
+    const allMods = $('.box');
+
+    allMods.each((i, el) => {
+        const $el = $(el);
+        $el.isVisible(true) ? $el.addClass("already-visible") : null; 
+    });
+
+    win.scroll(e => {
+        allMods.each((i, el) => {
+            const $el = $(el);
+            $el.isVisible(true) ? $el.addClass("slide-in") : null; 
+        });
+    });
+}
+
+$.fn.isVisible = function(partial) {
+    
+    var $t            = $(this),
+        $w            = $(window),
+        viewTop       = $w.scrollTop(),
+        viewBottom    = viewTop + $w.height(),
+        _top          = $t.offset().top,
+        _bottom       = _top + $t.height(),
+        compareTop    = partial === true ? _bottom : _top,
+        compareBottom = partial === true ? _top : _bottom;
+
+    return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+
+};
+
+
 
 //================================================================================
 // Event Listeners
 //================================================================================
-
-
+function checkoutProjectsClick() {
+    $(CHECKOUT_BTN).on('click', e => {
+        e.preventDefault();
+        smoothScroll(ABOUT_ME, 1000, 100);
+    });    
+}
 
 //================================================================================
 // Event Listener Groups
 //================================================================================
 
 function navClicks() {
+    checkoutProjectsClick();
 }
 
 function footerClicks() {
@@ -140,6 +187,8 @@ function footerClicks() {
 
 function utils() {
     checkSizeHandler();
+    checkForTouch();
+    slideIntoPlace();
 }
 
 function init() {
