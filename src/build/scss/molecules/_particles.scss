@@ -6,7 +6,7 @@ canvas {
 /* ---- particles.js container ---- */
   
 #particles-js {
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     width: 100%;
@@ -16,4 +16,14 @@ canvas {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%; 
+    // -webkit-filter: blur(2px);
+    // filter:  blur(2px);
+
+    &::before {
+        // @extend %cover;
+        // content: '';
+        // background-color: blue;
+        // opacity: 0.2;
+        // pointer-events: none;
+    }
 } 

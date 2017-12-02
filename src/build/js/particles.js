@@ -1,8 +1,8 @@
-// // // // // // // // // // // // // // //
-// 
-//   Particles Config
-//
-// // // // // // // // // // // // // // // 
+// // // // // // // // // // // // // // // //
+// // 
+// //   Particles Config
+// //
+// // // // // // // // // // // // // // // // 
 
 
 particlesJS("particles-js", {
@@ -27,7 +27,7 @@ particlesJS("particles-js", {
           "nb_sides": 5
         },
         "image": {
-          "src": "img/github.svg",
+          "src": "img/github.svg", 
           "width": 100,
           "height": 100
         }
@@ -61,7 +61,7 @@ particlesJS("particles-js", {
       },
       "move": {
         "enable": true,
-        "speed": 6,
+        "speed": 5,
         "direction": "none",
         "random": false,
         "straight": false,
@@ -99,7 +99,7 @@ particlesJS("particles-js", {
           "size": 40,
           "duration": 2,
           "opacity": 8,
-          "speed": 3
+          "speed": 10
         },
         "repulse": {
           "distance": 200,

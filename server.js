@@ -13,7 +13,6 @@ const { PORT } = require('./config');
 
 const app = express();
 
-console.log('NODE_PATH: ', process.env.NODE_PATH);
 
 // CONFIGURE APP
 app.engine('ejs', engine);

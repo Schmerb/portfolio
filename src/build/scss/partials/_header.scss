@@ -5,7 +5,52 @@
 // // // // // // // // // //
 
 .banner {
-    min-height: 20vh;
-    width: 100%;
-    border: 1px solid blue;
+    position: relative;
+    color: white;
+    position: relative;
+    min-height: 100vh;
+    overflow: auto;
+    // border: 1px solid blue;
+    nav {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        li {
+            display: block;
+        }
+    }
+    .headline {
+        @extend %center;
+        top: 100px;
+        width: 100%;
+        text-align: center;
+        pointer-events: none;
+        z-index: 1;
+        .me-overview {
+            font-size: 64px;
+        }
+        .my-name {
+            color: #e69839;
+        }
+        .skills-overview {
+            font-size: 18px;
+        }
+    }   
+    .checkout-btn {
+        @extend %center;
+        bottom: 100px;
+        color: #e69839;
+        background-color: white;
+        font-size: 24px;
+        border-radius: 8px;
+        padding: 10px;
+        padding-right: 60px;
+        cursor: pointer;
+        z-index: 1;
+        svg {
+            @include middleR(15px);
+            width: 30px;
+            height: 30px;
+        }
+    }
 }

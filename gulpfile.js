@@ -76,7 +76,7 @@ gulp.task('watch_scss', () => {
 /////////////////
 // - JS
 /////////////////
-const JS_SRC  = 'build/js/*.js';
+const JS_SRC  = 'src/build/js/*.js';
 const JS_DEST = 'public/js/';
 gulp.task('build_js', () => {
 	return gulp.src(JS_SRC)

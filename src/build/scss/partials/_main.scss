@@ -10,7 +10,13 @@ main {
 
 .container {
     max-width: 1000px;
-    height: 400px;
-    margin: 0 auto;
-    border: 1px solid black;
+    margin: 100px auto 0;
+
+    section {
+        width: 100%;
+        min-height: 400px;
+        height: 80vh;
+        margin-bottom: 40px;
+        border: 1px solid black;
+    }
 }
