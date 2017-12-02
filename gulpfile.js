@@ -56,11 +56,11 @@ gulp.task('nodemon', (cb) => {
 /////////////////
 // - SCSS/CSS
 /////////////////
-const SCSS_BUILD = 'build/scss/**/*.scss';
+const SCSS_BUILD = 'src/build/scss/**/*.scss';
 const SCSS_DEST  = 'public/css';
 
 gulp.task('build_scss', function() {
-    return gulp.src('build/scss/screen.scss')
+    return gulp.src('src/build/scss/screen.scss')
         .pipe(sassGlob())
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(minifyCSS())
