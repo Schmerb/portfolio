@@ -10,7 +10,7 @@
 }
 
 .box {
-    @include transition(0.5s);
+    @include transition(0.7s);
     background-color: rgba(limegreen, 0.7);
     position: relative;
     float: left;
@@ -25,6 +25,6 @@
     }
     &:nth-child(odd) {
         background-color: rgba(rgb(12, 120, 209), 0.7);
-        @include transition(0.8s);
+        @include transition(1s);
     }
 }

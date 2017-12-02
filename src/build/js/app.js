@@ -147,15 +147,14 @@ $.fn.isVisible = function(partial) {
     
     var $t            = $(this),
         $w            = $(window),
-        viewTop       = $w.scrollTop(),
-        viewBottom    = viewTop + $w.height(),
-        _top          = $t.offset().top,
-        _bottom       = _top + $t.height(),
+        viewTop       = $w.scrollTop(),        // Top of window to top of document
+        viewBottom    = viewTop + $w.height(), // bottom of window to top of document
+        _top          = $t.offset().top,       // Distance from top of element to top of document
+        _bottom       = _top + $t.height(),    // Distance form bottom of element to top of document
         compareTop    = partial === true ? _bottom : _top,
         compareBottom = partial === true ? _top : _bottom;
 
     return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
-
 };
 
 
