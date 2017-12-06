@@ -1,0 +1,108 @@
+// // // // // // // // // //
+//
+//      Project Article
+//
+// // // // // // // // // //
+
+.projects-container {
+    article {
+        min-height: 300px;
+        // border: 1px solid blue;
+        h2 {
+            color: $primary;
+            font-size: 36px;
+        }
+        > label {
+            display: block;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        p {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 10px;
+            font-size: 18px;
+        }
+    }
+    .proj-hr {
+        width: 90%;
+        margin: 80px auto;
+    }
+    // LINKS
+    .links-list {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 60px;
+        li {
+            &.btn-left {
+                margin-right: 10px;
+            }
+            &.btn-right {
+                margin-left: 10px;
+            }
+        }
+    }
+    a.button {
+        display: inline-block;
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid black;
+    }
+    .live-link {
+        display: block;
+        width: 140px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 20px;
+    }
+    // Production IMAGES
+    .prod-images {
+        position: relative;
+        width: 100%;
+    }
+    .desktop-img-wrap {
+        width: 75%;
+        margin-left: 20px;
+        &.righthand {
+            position: relative;
+            right: -15%;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .laptop-img-wrap {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 55%;
+        margin: 0 auto;
+        &.righthand {
+            right: auto;
+            left: 5px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .mobile-img-wrap {
+        position: absolute;
+        left: 5px;
+        bottom: 0;
+        min-width: 60px;
+        width: 15%;
+        &.righthand {
+            left: auto;
+            right: 5px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+} 

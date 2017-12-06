@@ -35,6 +35,10 @@
         .me-overview {
             font-size: 64px;
         }
+        .me-overview-sm {
+            display: block;
+            font-size: 40px;
+        }
         .my-name {
             color: #e69839;
         }
@@ -44,13 +48,16 @@
     }   
     .checkout-btn {
         @extend %center;
-        bottom: 20px;
-        color: #e69839;
         background-color: rgba(white,0.6); 
+        color: #e69839;
         font-size: 24px;
-        border-radius: 8px;
+        bottom: 20px;
+        width: 90%;
+        max-width: 280px;
         padding: 10px;
         padding-right: 60px;
+        border: none;
+        border-radius: 8px;
         cursor: pointer;
         overflow: hidden;
         z-index: 1;

@@ -4,27 +4,19 @@
 //
 // // // // // // // // // //
 
-.boxes {
-    width: 90%;
-    border: 1px solid blue;
-}
 
-.box {
-    @include transition(0.7s);
-    background-color: rgba(limegreen, 0.7);
-    position: relative;
-    float: left;
-    width: 300px;
-    height: 300px;
-    border: 1px solid black;
-    opacity: 0;
-    top: 100px;
-    &.slide-in {
-        top: 0;
-        opacity: 1;
+#about-me {
+    h2, p {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 15px;
     }
-    &:nth-child(odd) {
-        background-color: rgba(rgb(12, 120, 209), 0.7);
-        @include transition(1s);
+    h2 {
+        color: $primary;
+        font-size: 46px;
+        margin-bottom: 60px;
+    }
+    p {
+        font-size: 22px;
     }
 }

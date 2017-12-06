@@ -1,0 +1,45 @@
+// // // // // // // // // //
+//
+//      Projects
+//
+// // // // // // // // // //
+
+#projects {
+    h2 {
+        text-align: center;
+    }
+    .projects-header {
+        position: relative;
+        background-color: $primary;
+        width: 100%;
+        height: 400px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        .inner-wrap {
+            @extend %abs-middle;
+            width: 95%;
+        }
+        h2 {
+            color: $brown;
+            font-size: 34px;
+            margin-bottom: 20px;
+            @include mediaMin(600px) {
+                font-size: 44px;
+            }
+            @include mediaMin($desktop) {
+                font-size: 54px;;
+            }
+        }
+        p {
+            color: $bone;
+            font-size: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+}
+.projects-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
