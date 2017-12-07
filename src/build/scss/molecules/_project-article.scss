@@ -44,6 +44,7 @@
         }
     }
     a.button {
+        @extend %transition;
         display: inline-block;
         position: relative;
         width: 140px;
@@ -52,6 +53,13 @@
         text-align: center;
         border: 1px solid $blue;
         border-radius: 5px;
+        &:hover {
+            color: $blue;
+            border-color: darken($blue, 10%);
+            svg {
+                fill: $blue;
+            }
+        }
         &.crypto {
             span {
                 display: inline-block;
@@ -66,6 +74,7 @@
             margin-right: 15px;
         }
         svg {
+            @extend %transition;
             @include middleR(10px);
         }
     }
@@ -95,7 +104,7 @@
         margin-left: 20px;
         opacity: 0;
         &.slide-in {
-            bottom: 0;
+            bottom: 15px;
             right: -15%;
             opacity: 1;
             &.reverse {
