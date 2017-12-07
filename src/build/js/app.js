@@ -75,7 +75,7 @@ function show() {
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-// Sends email to Dana Gaiser on form submit
+// Sends email to me on form submit
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function sendEmail($form) {
     // hide previous error
@@ -106,8 +106,8 @@ function sendEmail($form) {
             }, 3000);  
         },
         error: (jqXHR, status, err) => {
-            // console.log({jqXHR, status, err});
-            // console.log(jqXHR.responseJSON.error);
+            console.log({jqXHR, status, err});
+            console.log(jqXHR.responseJSON.error);
 
             // stop sending animation
             $(SUBMIT_BTN).removeClass('sending');
