@@ -9,7 +9,7 @@
     h2 {
         text-align: center;
         font-size: 36px;
-        margin: 20px 0;
+        margin: 20px 0 50px;
     }
 }
 
@@ -21,15 +21,17 @@
         display: block;
         width: 100%;
         padding-left: 10px;
-        border: 1px solid black;
+        border: 1px solid lightgrey;
         outline-color: $lightbrown;
+        
     }
     input {
         height: 40px;
         line-height: 40px;
     }
     textarea {
-        height: 150px;
+        height: 130px;
+        min-height: 130px;
         padding-top: 10px;
         resize: vertical;
     }
@@ -39,32 +41,102 @@
         width: 80%;
         max-width: 500px;
         margin: 0 auto;
-    }
-    span {
-        @extend %transition;
-        position: absolute;
-        color: rgba(#555,0.8);
-        left: 10px;
-        top: 10px;
-        z-index: 10;
-        pointer-events: none;
-        &.move {
-            &.name {
-                left: -95px;
-            }
-            &.email {
-                left: -58px;
-            }
-            &.message {
-                left: -158px;
+        @include mediaMax(859px) {
+            margin-bottom: 30px;
+        }
+        span {
+            @extend %transition;
+            position: absolute;
+            color: rgba(#555,0.8);
+            left: 10px;
+            top: 10px;
+            z-index: 10;
+            pointer-events: none;
+            &.move {
+                @include mediaMax(859px) {
+                    &.name {
+                        top: -24px;
+                    }
+                    &.email {
+                        top: -24px;
+                    }
+                    &.message {
+                        top: -24px;
+                    }
+                }
+                @include mediaMin(860px) {
+                    &.name {
+                        left: -95px;
+                    }
+                    &.email {
+                        left: -58px;
+                    }
+                    &.message {
+                        left: -158px;
+                    }
+                }
             }
         }
     }
+    .error {
+        color: $error;
+        margin-top: 20px;
+        font-size: 20px;
+    }
     button {
+        border-color: lighten($blue, 10%); 
+        position: relative;
         width: 200px;
         height: 50px;
         border-radius: 8px;
         margin-top: 20px;
         cursor: pointer;
+        overflow: hidden;
+        &:hover {
+            span {
+                color: $blue;
+            }
+        }
+        span {
+            @extend %abs-middle;
+            @include transition(0.2s);
+            color: black;
+            z-index: 1;
+        }
+        &::after {
+            @extend %middle;
+            @include transform(rotate(-10deg));
+            @include benz-transition(0s);
+            content: '';
+            background-color: lightgreen;
+            width: 300px;
+            height: 150px;
+            left: -160%;
+            top: -40px;
+        }
+        &::before {
+            content: '';
+            @include transition(0.4s);
+            @extend %cover;
+            background-color: lightgreen;
+            opacity: 0;
+        }
+        &.fadeOut {
+            &::before {
+                @include transition(0.4ss);
+                opacity: 1;
+            }
+        }
+        &.sending {
+            &::after {
+                @include transition(2s);
+                left: 0;
+            }
+        }
+        &.sent {
+            &::after {
+                left: 0;
+            }
+        }
     }
 }

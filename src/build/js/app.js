@@ -16,8 +16,9 @@ const ABOUT_ME = '#about-me';
 const PROJECTS = '#projects';
 const CONTACT  = '#contact';
 
-const FORM_FIELDS = '.contact-form input, .contact-form textarea';
+const FORM_FIELDS  = '.contact-form input, .contact-form textarea';
 const CONTACT_FORM = '.contact-form';
+const SUBMIT_BTN   = '.submit-btn';
 
 
 
@@ -77,22 +78,42 @@ function show() {
 // Sends email to Dana Gaiser on form submit
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function sendEmail($form) {
+    // hide previous error
     hide('.error');
-    console.log('Form: ', $form);
+    // start sending animation
+    $(SUBMIT_BTN).addClass('sending');
+
     $.ajax({
         url: "https://formspree.io/mikeschmerbeck@gmail.com",
         method: "POST",
         data: $form.serialize(),
         dataType: 'json',
         success: res => {
-            $form[0].reset();
-            alert('Success! Your email has been sent.');
+            $(SUBMIT_BTN).removeClass('sending')
+                         .addClass('sent')
+                         .addClass('fadeOut')
+                         .find('span')
+                         .text('SENT!');
+            setTimeout(() => {
+                // wait 3s then clear form and reset button
+                $form[0].reset();
+                $(FORM_FIELDS).siblings('span')
+                              .removeClass('move');
+                $(SUBMIT_BTN).removeClass('sent')
+                             .removeClass('fadeOut')
+                             .find('span')
+                             .text('Send');
+            }, 3000);  
         },
         error: (jqXHR, status, err) => {
             // console.log({jqXHR, status, err});
             // console.log(jqXHR.responseJSON.error);
+
+            // stop sending animation
+            $(SUBMIT_BTN).removeClass('sending');
+            // display error message
             show('.error');
-            $(CONTACT_FORM).find('input[name=name]').focus();
+            $(CONTACT_FORM).find('input[type=text]').focus();
         }
     });
 }
@@ -212,6 +233,7 @@ function contactFormFocus() {
 function contactFormSubmit() {
     $(CONTACT_FORM).on('submit', function(e) {
         e.preventDefault();
+        // $(SUBMIT_BTN).removeClass('error');
         sendEmail($(this));
     });
 }
