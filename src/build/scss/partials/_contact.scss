@@ -20,9 +20,7 @@
     input, textarea {
         display: block;
         width: 100%;
-        // width: 80%;
-        // max-width: 500px;
-        // margin: 0 auto;
+        padding-left: 10px;
         border: 1px solid black;
         outline-color: $lightbrown;
     }
@@ -32,13 +30,8 @@
     }
     textarea {
         height: 150px;
+        padding-top: 10px;
         resize: vertical;
-    }
-    button {
-        width: 160px;
-        height: 50px;
-        border-radius: 8px;
-        cursor: pointer;
     }
     label {
         display: block;
@@ -48,10 +41,30 @@
         margin: 0 auto;
     }
     span {
+        @extend %transition;
         position: absolute;
         color: rgba(#555,0.8);
-        left: 5px;
+        left: 10px;
         top: 10px;
         z-index: 10;
+        pointer-events: none;
+        &.move {
+            &.name {
+                left: -95px;
+            }
+            &.email {
+                left: -58px;
+            }
+            &.message {
+                left: -158px;
+            }
+        }
+    }
+    button {
+        width: 200px;
+        height: 50px;
+        border-radius: 8px;
+        margin-top: 20px;
+        cursor: pointer;
     }
 }

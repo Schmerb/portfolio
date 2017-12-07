@@ -16,6 +16,9 @@ const ABOUT_ME = '#about-me';
 const PROJECTS = '#projects';
 const CONTACT  = '#contact';
 
+const FORM_FIELDS = '.contact-form input, .contact-form textarea';
+const CONTACT_FORM = '.contact-form';
+
 
 
 //================================================================================
@@ -70,8 +73,29 @@ function show() {
 //================================================================================
 
 
-// TODO
-
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// Sends email to Dana Gaiser on form submit
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function sendEmail($form) {
+    hide('.error');
+    console.log('Form: ', $form);
+    $.ajax({
+        url: "https://formspree.io/mikeschmerbeck@gmail.com",
+        method: "POST",
+        data: $form.serialize(),
+        dataType: 'json',
+        success: res => {
+            $form[0].reset();
+            alert('Success! Your email has been sent.');
+        },
+        error: (jqXHR, status, err) => {
+            // console.log({jqXHR, status, err});
+            // console.log(jqXHR.responseJSON.error);
+            show('.error');
+            $(CONTACT_FORM).find('input[name=name]').focus();
+        }
+    });
+}
 
 
 
@@ -169,6 +193,29 @@ function checkoutProjectsClick() {
     });    
 }
 
+//
+// Contact Form
+//
+function contactFormFocus() {
+    $(FORM_FIELDS).on('focusin', function(e) {
+        e.preventDefault();
+        $(this).siblings('span').addClass('move');
+    });
+    $(FORM_FIELDS).on('focusout', function(e) {
+        e.preventDefault();
+        if(!($(this).val().trim())) {
+            $(this).siblings('span').removeClass('move');
+        }
+    });
+}
+
+function contactFormSubmit() {
+    $(CONTACT_FORM).on('submit', function(e) {
+        e.preventDefault();
+        sendEmail($(this));
+    });
+}
+
 //================================================================================
 // Event Listener Groups
 //================================================================================
@@ -202,6 +249,8 @@ function init() {
 $(function () {
     utils();
     navClicks();
+    contactFormFocus();
+    contactFormSubmit();
     init();
 });
 // // // // // // // // // // // // // // // //
