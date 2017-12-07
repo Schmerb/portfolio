@@ -23,6 +23,9 @@ body {
     min-height: 100vh;
     min-width: 320px;
     padding-bottom: 150px;
+    > svg {
+        display: none;
+    }
 }
 
 *, 

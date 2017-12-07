@@ -29,7 +29,7 @@
         width: 90%;
         margin: 80px auto;
     }
-    // LINKS
+    // LINK buttons
     .links-list {
         text-align: center;
         margin-top: 20px;
@@ -45,11 +45,29 @@
     }
     a.button {
         display: inline-block;
+        position: relative;
         width: 140px;
         height: 40px;
         line-height: 40px;
         text-align: center;
-        border: 1px solid black;
+        border: 1px solid $blue;
+        border-radius: 5px;
+        &.crypto {
+            span {
+                display: inline-block;
+                margin-right: 15px;
+            }
+            svg {
+                @include middleR(2px);
+            }
+        }
+        span {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        svg {
+            @include middleR(10px);
+        }
     }
     .live-link {
         display: block;
@@ -75,9 +93,11 @@
         bottom: -200px;
         width: 75%;
         margin-left: 20px;
+        opacity: 0;
         &.slide-in {
             bottom: 0;
             right: -15%;
+            opacity: 1;
             &.reverse {
                 right: -5%;
             }
@@ -143,3 +163,4 @@
         }
     }
 } 
+
