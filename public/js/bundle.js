@@ -128,7 +128,7 @@ function checkForTouch() {
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function slideIntoPlace() {
     const win     = $(window);
-    const allMods = $('.box');
+    const allMods = $('.target');
 
     allMods.each((i, el) => {
         const $el = $(el);
@@ -165,7 +165,7 @@ $.fn.isVisible = function(partial) {
 function checkoutProjectsClick() {
     $(CHECKOUT_BTN).on('click', e => {
         e.preventDefault();
-        smoothScroll(ABOUT_ME, 1000, 100);
+        smoothScroll(PROJECTS, 1000, 100);
     });    
 }
 
