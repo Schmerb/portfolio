@@ -22,7 +22,7 @@ body {
     position: relative;
     min-height: 100vh;
     min-width: 320px;
-    padding-bottom: 150px;
+    padding-bottom: $footer;
     > svg {
         display: none;
     }

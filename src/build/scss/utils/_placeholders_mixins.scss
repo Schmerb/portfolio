@@ -172,3 +172,8 @@
     50%  { @include transform(scale(1.1)); }
     100% { @include transform(scale(1));   }
 }
+@include keyframes(bounce) {
+    0%   { @include transform(translate(0, 0));   }
+    50%  { @include transform(translate(0, -5px)); }
+    100% { @include transform(translateY(0, 0));   }
+}
