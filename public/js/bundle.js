@@ -83,6 +83,12 @@ function sendEmail($form) {
     // start sending animation
     $(SUBMIT_BTN).addClass('sending');
 
+    console.log($form[0][0].value);
+    console.log($form[0][1].value);
+    console.log($form[0][2].value);
+
+    console.log($form.serialize());
+
     $.ajax({
         url: "https://formspree.io/mikeschmerbeck@gmail.com",
         method: "POST",
