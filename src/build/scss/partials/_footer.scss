@@ -68,23 +68,25 @@
     }
 }
 // UP ARROW
-.icon-up-arrow-box {
+.up-icon-wrap{
     // @extend %center;
     position: absolute;
+    width: 32px;
+    height: 32px;
     right: 20px;
     top: -8px;
-    fill: greenyellow;
-    cursor: pointer;
     &:hover {
         @include animation(bounce 2s ease-in-out infinite);
     }
     &::after {
-        content: 'hello';
-        display: inline-block;
-        position: relative;
-        width: 200px;
-        height: 200px;
-        border: 1px solid red;
+        content: '';
+        @extend %cover;
+        background-color: $primary;
+        z-index: -1;
+    }
+    svg {
+        fill: greenyellow;
+        cursor: pointer;
     }
 }
 // SOCIAL ICONS
