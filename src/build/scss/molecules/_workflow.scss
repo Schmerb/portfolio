@@ -35,7 +35,7 @@
             opacity: 1;
         }
         @include mediaMin($tablet) {
-            width: 25%;
+            width: 20%;
             margin-top: 40px;
             float: left;
         }
@@ -51,11 +51,11 @@
         }
         &.gulp-cup {
             img {
-                width: 50%;
+                width: 45%;
                 height: auto;
                 @include mediaMin($tablet) {
                     height: 18vw;
-                    max-height: 180px;
+                    max-height: 150px;
                     width: auto;
                 }
             }
