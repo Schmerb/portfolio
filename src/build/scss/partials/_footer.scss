@@ -69,12 +69,16 @@
 }
 // UP ARROW
 .up-icon-wrap{
-    // @extend %center;
-    position: absolute;
+    @extend %transition;
+    position: fixed;
     width: 32px;
     height: 32px;
-    right: 20px;
-    top: -8px;
+    right: 15px;
+    bottom: 375px;
+    opacity: 1;
+    &.fade {
+        opacity: 0;
+    }
     &:hover {
         @include animation(bounce 2s ease-in-out infinite);
     }
@@ -85,6 +89,7 @@
         z-index: -1;
     }
     svg {
+        @extend %transition;
         fill: greenyellow;
         cursor: pointer;
     }

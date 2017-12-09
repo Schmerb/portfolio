@@ -20,6 +20,13 @@ const FORM_FIELDS  = '.contact-form input, .contact-form textarea';
 const CONTACT_FORM = '.contact-form';
 const SUBMIT_BTN   = '.submit-btn';
 
+const UP_ARROW      = '.icon-up-arrow-box';
+const UP_ARROW_WRAP = '.up-icon-wrap';
+const NAV_PROJECT   = '.project';
+const NAV_ABOUT     = '.about';
+const NAV_WORKFLOW  = '.workflow';
+const NAV_CONTACT   = '.contact';
+
 
 
 //================================================================================
@@ -179,7 +186,8 @@ function checkForTouch() {
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function slideIntoPlace() {
     const win     = $(window);
-    const allMods = $('.target');
+    const targets = '.target, .tech-logos li, .links-list li, .proj-details, .workflow-section li';
+    const allMods = $(targets);
 
     allMods.each((i, el) => {
         const $el = $(el);
@@ -208,6 +216,32 @@ $.fn.isVisible = function(partial) {
     return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
 };
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// Places event listener to fire on scroll
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function checkScrollPos() {
+    $(window).scroll(() => {
+        // fixBanner(); TODO
+        toggleUpArrow();
+    });
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// Checks vertical scroll position and hides/shows up arrow
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function toggleUpArrow() {
+    let winToTop       = $(document).height() - $(window).scrollTop();
+    let distFromBottom = winToTop - $(window).height();
+    if(distFromBottom >= 200) {
+        $(UP_ARROW).add(UP_ARROW_WRAP).addClass('fade');
+    } else {
+        show(UP_ARROW_WRAP);
+        setTimeout(() => {
+            $(UP_ARROW).add(UP_ARROW_WRAP).removeClass('fade');
+        }, 100);
+    }
+}
+
 
 
 //================================================================================
@@ -216,7 +250,7 @@ $.fn.isVisible = function(partial) {
 function checkoutProjectsClick() {
     $(CHECKOUT_BTN).on('click', e => {
         e.preventDefault();
-        smoothScroll(PROJECTS, 1000, 100);
+        smoothScroll(PROJECTS, 1000);
     });    
 }
 
@@ -244,15 +278,48 @@ function contactFormSubmit() {
     });
 }
 
+// Footer
+function upArrowClick() {
+    $(UP_ARROW).on('click', function(e) {
+        e.preventDefault();
+        smoothScroll('header');
+    });
+}
+function navItemClicks() {
+    $(NAV_PROJECT).on('click', e => {
+        e.preventDefault();
+        smoothScroll('#projects');
+    });
+    $(NAV_ABOUT).on('click', e => {
+        e.preventDefault();
+        smoothScroll('#about-me');
+    });
+    $(NAV_WORKFLOW).on('click', e => {
+        e.preventDefault();
+        smoothScroll('#workflow');
+    });
+    $(NAV_CONTACT).on('click', e => {
+        e.preventDefault();
+        smoothScroll('#contact');
+    });
+}
+
 //================================================================================
 // Event Listener Groups
 //================================================================================
 
 function navClicks() {
     checkoutProjectsClick();
+    navItemClicks();
+}
+
+function bodyClicks() {
+    contactFormFocus();
+    contactFormSubmit();
 }
 
 function footerClicks() {
+    upArrowClick();
 }
 
 //================================================================================
@@ -261,6 +328,7 @@ function footerClicks() {
 
 function utils() {
     checkSizeHandler();
+    checkScrollPos();
     checkForTouch();
     slideIntoPlace();
 }
@@ -276,9 +344,11 @@ function init() {
 
 $(function () {
     utils();
+
     navClicks();
-    contactFormFocus();
-    contactFormSubmit();
+    bodyClicks();
+    footerClicks();
+
     init();
 });
 // // // // // // // // // // // // // // // //

@@ -14,15 +14,25 @@
     ul {
         max-width: 1000px;
         margin: 80px auto;
-        overflow: auto;
+        overflow: hidden;
     }
 
     li {
+        @include transition(1s);
+        @include transform(translate(200px, 200px));
         display: block;
         width: 80%;
         margin: 0 auto 10px;
+        opacity: 0;
         &:nth-of-type(3n) {
             margin-bottom: 25px;
+        }
+        &:nth-of-type(2n) {
+            @include transform(translate(-200px, 200px));
+        }
+        &.slide-in, &.already-visited {
+            @include transform(translate(0, 0));
+            opacity: 1;
         }
         @include mediaMin($tablet) {
             width: 25%;
