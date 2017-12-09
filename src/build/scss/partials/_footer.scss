@@ -137,5 +137,19 @@
     color: greenyellow;
     bottom: 20px;
     width: 90%;
+    max-width: 400px;
     text-align: center;
+}
+.icon-email-icon {
+    @extend %transition;
+    width: 25px;
+    height: 25px;
+    fill: greenyellow;
+    @include mediaMax($tablet - 1) {
+        @include center();
+        bottom: 30px;
+    }
+    @include mediaMin($tablet){
+        @include middleR(35px);
+    }
 }

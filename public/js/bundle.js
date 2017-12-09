@@ -186,8 +186,13 @@ function checkForTouch() {
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function slideIntoPlace() {
     const win     = $(window);
-    const targets = '.target, .tech-logos li, .links-list li, .proj-details, .workflow-section li';
-    const allMods = $(targets);
+    const targets = ['.target',
+                     '.tech-logos li',
+                     '.links-list li',
+                     '.proj-details',
+                     '.workflow-section li'
+                    ];
+    const allMods = $(targets.join(', '));
 
     allMods.each((i, el) => {
         const $el = $(el);
