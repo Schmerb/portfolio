@@ -91,6 +91,7 @@
     svg {
         @extend %transition;
         fill: greenyellow;
+        fill: $purp;
         cursor: pointer;
     }
 }
@@ -120,6 +121,7 @@
                 svg {
                     @include transform(translate(-50%, -50%) scale(0.8));
                     fill: pink;
+                    fill: $purp;
                 }
             }
         }
@@ -134,19 +136,25 @@
 
 .copyright {
     @extend %center;
+    color: $purp;
     color: greenyellow;
     bottom: 20px;
     width: 90%;
     max-width: 400px;
     text-align: center;
+    span {
+        // opacity: 0.5;
+    }
 }
 .icon-email-icon {
     @extend %transition;
     width: 25px;
     height: 25px;
     fill: greenyellow;
+    fill: #fff;
+    fill: grey;
     @include mediaMax($tablet - 1) {
-        @include center();
+        @include center;
         bottom: 30px;
     }
     @include mediaMin($tablet){

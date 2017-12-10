@@ -5,10 +5,14 @@
 // // // // // // // // // //
 
 #projects {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
     h2 {
         text-align: center;
+        color: $purp;
     }
     .projects-header {
+        font-weight: 300;
         position: relative;
         background-color: $primary;
         width: 100%;
@@ -20,7 +24,7 @@
             width: 95%;
         }
         h2 {
-            color: $brown;
+            // color: $brown;
             font-size: 34px;
             margin-bottom: 20px;
             @include mediaMin(600px) {
@@ -32,7 +36,8 @@
         }
         p {
             color: $bone;
-            font-size: 20px;
+            
+            font-size: 22px;
             max-width: 900px;
             margin: 0 auto;
             text-align: center;

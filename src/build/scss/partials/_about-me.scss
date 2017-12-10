@@ -6,19 +6,21 @@
 
 
 #about-me {
-    background-color: $lightbrown;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    // background-color: $lightbrown;
+    // background-color: $brown;
     // background-color: $blue;
-    // height: 80vh;
+    background-color: $purp;
     margin: 50px 0;
     padding: 100px 0;
     h2, p {
+        color: white;
         text-align: center;
         max-width: 600px;
         margin: 0 auto 15px;
     }
     h2 {
-        color: $primary;
-        color: white;
         font-size: 46px;
         margin-bottom: 60px;
     }

@@ -1,0 +1,46 @@
+// // // // // // // // // //
+//
+//      Fixed Banner
+//
+// // // // // // // // // //
+
+.fixed-banner {
+    .main-nav {
+        ul {
+            li {
+                display: inline-block;
+                margin-right: 15px;
+            }
+        }
+    }
+}
+.burger-btn {
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: 1px solid greenyellow;
+    cursor: pointer;
+}
+.burger {
+    @extend %abs-middle;
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    &::before,
+    &::after {
+        position: relative;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 4px;
+        background-color: black;
+    }
+    &::before {
+        top: -9px;
+    }
+    &::after {
+        top: 5px;
+    }
+}

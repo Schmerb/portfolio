@@ -5,11 +5,11 @@
 // // // // // // // // // //
 
 .banner {
+    font-family: 'Raleway', sans-serif;
     position: relative;
     color: white;
     position: relative;
     min-height: 100vh;
-    font-family: 'Raleway', sans-serif;
     overflow: auto;
     nav {
         position: relative;
@@ -41,6 +41,8 @@
         }
         .my-name {
             color: #e69839;
+            color: $purp;            
+            font-weight: bold;
         }
         .skills-overview {
             font-size: 18px;

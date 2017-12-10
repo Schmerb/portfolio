@@ -48,3 +48,29 @@
         }
     }
 }
+// droned.reviews icons adjustment 
+.droned {
+    .tech-logos {
+        li {
+            &:last-of-type {
+                .img-wrap {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+        }
+    }
+}
+// streamit icons adjustment 
+.streamit {
+    .tech-logos {
+        li {
+            &:last-of-type, &:nth-last-child(2) {
+                .img-wrap {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+        }
+    }
+}
