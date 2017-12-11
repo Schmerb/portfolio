@@ -40,7 +40,6 @@
         &::before {
             @include transform(rotate(225deg));
             top: 3px;
-
         }
         &::after {
             @include transform(rotate(135deg));
