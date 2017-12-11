@@ -2,7 +2,13 @@
 
 const state = {
     isMobile: false,
-    hasTouch: false
+    hasTouch: false,
+    scroll: {
+        yPos: 0,
+        up: false,
+        baseYPos: 0,
+        downBaseYPos: 0,
+    }
 };
 
 
@@ -226,8 +232,8 @@ $.fn.isVisible = function(partial) {
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function checkScrollPos() {
     $(window).scroll(() => {
-        // fixBanner(); TODO
         toggleUpArrow();
+        fixBanner();
     });
 }
 
@@ -247,6 +253,59 @@ function toggleUpArrow() {
     }
 }
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// Fixes banner to top of window below header
+// on upward scrolls
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function fixBanner() {
+    let current = $(window).scrollTop();
+    if(current > $('.banner').height()) {
+        $('.fixed-banner').addClass('fix');
+    } else {
+        $('.fixed-banner').removeClass('fix');
+    }
+    
+     // if current yPos is less than previous, scrolling upwards
+     if(current <= state.scroll.yPos) {
+        
+        // scrolled upwards for 10 or more px
+        if(state.scroll.baseYPos - current >= 2) {
+        }
+        $('.fixed-banner').addClass('show');
+
+        // just started going up, keep track of beginning of upwards distance
+        if(state.scroll.up === false) {
+            state.scroll.baseYPos = current;
+        }
+        state.scroll.up = true;
+    } else {// scrolling downwards
+
+        // just started going dowm, keep track of beginning of downwards distance
+        if(state.scroll.up === true) {
+            state.scroll.downBaseYPos = current; 
+        }
+
+        // scrolled downwards for 15 or more px
+        if(current - state.scroll.downBaseYPos >= 35) {
+            $('.fixed-banner').removeClass('show');
+        }
+        
+        state.scroll.up = false;
+        state.scroll.baseYPos = 0;
+    }
+    state.scroll.yPos = current;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// Sets max-height of banner image to current height to
+// avoid page jump due to search bar showing / hiding on
+// mobile devices
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function fixBannerImg() {
+    // $('#particles-js').css('max-height', `
+    // let h = $(window).height();${h + 60}px`);
+}
+
 
 
 //================================================================================
@@ -257,6 +316,15 @@ function checkoutProjectsClick() {
         e.preventDefault();
         smoothScroll(PROJECTS, 1000);
     });    
+}
+
+function burgerClick() {
+    $('.burger-btn').on('click', function(e) {
+        e.preventDefault();
+        $('.main-nav')
+            .add('.burger')
+            .toggleClass('open');
+    });
 }
 
 //
@@ -316,6 +384,7 @@ function navItemClicks() {
 function navClicks() {
     checkoutProjectsClick();
     navItemClicks();
+    burgerClick();
 }
 
 function bodyClicks() {
@@ -335,6 +404,7 @@ function utils() {
     checkSizeHandler();
     checkScrollPos();
     checkForTouch();
+    fixBannerImg();
     slideIntoPlace();
 }
 

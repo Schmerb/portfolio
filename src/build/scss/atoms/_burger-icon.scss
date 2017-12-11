@@ -1,0 +1,46 @@
+// // // // // // // // // //
+//
+//      Burger Icon
+//
+// // // // // // // // // //
+
+.burger-btn {
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid greenyellow; 
+    cursor: pointer;
+}
+.burger {
+    @extend %abs-middle;
+    width: 100%;
+    &::before,
+    &::after {
+        @extend %transition;
+        background-color: white;
+        position: relative;
+        display: block;
+        content: '';
+        width: 40px;
+        height: 4px;
+    }
+    &::before {
+        top: -5px;
+    }
+    &::after {
+        top: 5px;
+    }
+    &.open {
+        &::before {
+            @include transform(rotate(225deg));
+            top: 3px;
+
+        }
+        &::after {
+            @include transform(rotate(135deg));
+            top: 0;
+        }
+    }
+}

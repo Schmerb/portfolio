@@ -5,42 +5,61 @@
 // // // // // // // // // //
 
 .fixed-banner {
-    .main-nav {
-        ul {
-            li {
-                display: inline-block;
-                margin-right: 15px;
+    @include transition(0.4s);
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    &.fix {
+        top: -100%;
+        background-color: rgba($purp, 0.9);
+        box-shadow: 0 5px 40px rgba(black, 0.9);
+    }
+    &.show {
+        top: 0;
+        opacity: 1;
+    }
+    .burger-btn {
+        @include middleR(20px);
+        background-color: rgba(white,0.1);
+        border: none;
+        z-index: 6;
+    }
+}
+.main-nav {
+    @extend %cover;
+    @extend %transition;
+    position: fixed;
+    background-color: rgba($purp,0.85);
+    height: 100vh;
+    left: 100%;
+    padding-top: 50px;
+    &.open {
+        left: 0;
+    }
+    ul {
+        @extend %transition; 
+        font-size: 0px;
+        position: relative;
+        text-align: center;
+        li {
+            @include transition(0.5s);
+            font-size: 32px;
+            height: 80px;
+            line-height: 80px;
+            width: 250px;
+            margin: 0 auto;
+            padding: 0 10px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            &:hover {
+                color: silver;
             }
+        }
+        a {
+            display: inline-block;
         }
     }
 }
-.burger-btn {
-    display: block;
-    position: relative;
-    width: 50px;
-    height: 50px;
-    padding: 0;
-    border: 1px solid greenyellow;
-    cursor: pointer;
-}
-.burger {
-    @extend %abs-middle;
-    width: 100%;
-    height: 4px;
-    background-color: black;
-    &::before,
-    &::after {
-        position: relative;
-        display: block;
-        content: '';
-        width: 100%;
-        height: 4px;
-        background-color: black;
-    }
-    &::before {
-        top: -9px;
-    }
-    &::after {
-        top: 5px;
-    }
-}
+

@@ -60,8 +60,10 @@
             display: block;
             margin-bottom: 10px;
             a {
+                @include transition(0.15s);
                 &:hover {
                     color: $bone;
+                    color: $purp;
                 }
             }
         }
@@ -82,12 +84,12 @@
     &:hover {
         @include animation(bounce 2s ease-in-out infinite);
     }
-    &::after {
-        content: '';
-        @extend %cover;
-        background-color: $primary;
-        z-index: -1;
-    }
+    // &::after {
+    //     content: '';
+    //     @extend %cover;
+    //     background-color: $primary;
+    //     z-index: -1;
+    // }
     svg {
         @extend %transition;
         fill: greenyellow;

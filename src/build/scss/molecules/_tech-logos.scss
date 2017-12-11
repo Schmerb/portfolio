@@ -21,6 +21,15 @@
         &:nth-of-type(2n) {
             @include transform(translateX(200px));
         }
+        &:nth-of-type(1n) {
+            transition-delay: 0.1s;
+        }
+        &:nth-of-type(2n) {
+            transition-delay: 0.2s;
+        }
+        // &:nth-of-type(3n) {
+        //     transition-delay: 0.3s;
+        // }
         &.slide-in, &.already-visited {
             opacity: 1;
             @include transform(translate(0px));

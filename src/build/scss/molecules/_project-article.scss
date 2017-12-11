@@ -68,10 +68,10 @@
         border: 1px solid $blue;
         border-radius: 5px;
         &:hover {
-            color: $blue;
-            border-color: darken($blue, 10%);
+            color: $purp;
+            border-color: darken($purp, 10%);
             svg {
-                fill: $blue;
+                fill: $purp;
             }
         }
         &.crypto {
