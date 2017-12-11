@@ -25,13 +25,6 @@
         top: 0;
         opacity: 1;
     }
-    .burger-btn {
-        @include middleR(20px);
-        background-color: rgba(white,0.1);
-        border: none;
-        z-index: 6;
-        pointer-events: all;
-    }
 }
 .main-nav {
     @extend %cover;
