@@ -170,6 +170,8 @@ function checkSizeHandler() {
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function checkSize() {
     state.isMobile = window.innerWidth <= 414;
+
+    fixBannerImg();
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -269,9 +271,9 @@ function fixBanner() {
      if(current <= state.scroll.yPos) {
         
         // scrolled upwards for 10 or more px
-        if(state.scroll.baseYPos - current >= 2) {
+        if(state.scroll.baseYPos - current >= 10) {
+            $('.fixed-banner').addClass('show');
         }
-        $('.fixed-banner').addClass('show');
 
         // just started going up, keep track of beginning of upwards distance
         if(state.scroll.up === false) {
@@ -302,8 +304,9 @@ function fixBanner() {
 // mobile devices
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function fixBannerImg() {
-    // $('#particles-js').css('max-height', `
-    // let h = $(window).height();${h + 60}px`);
+    $('.banner').css('max-height', '');
+    let h = $('.banner').height();
+    $('.banner').css('max-height', h);
 }
 
 
@@ -317,13 +320,27 @@ function checkoutProjectsClick() {
         smoothScroll(PROJECTS, 1000);
     });    
 }
-
+// toggles slide menu
 function burgerClick() {
-    $('.burger-btn').on('click', function(e) {
+    $('.burger-btn').on('click', e => {
         e.preventDefault();
         $('.main-nav')
             .add('.burger')
             .toggleClass('open');
+        $('html')
+            .add('body')
+            .toggleClass('no-scroll');
+    });
+}
+// toggles slide menu to close
+function menuClick() {
+    $('.main-nav').on('click', e => {
+        $('.main-nav')
+            .add('.burger')
+            .toggleClass('open');
+        $('html')
+            .add('body')
+            .toggleClass('no-scroll');
     });
 }
 
@@ -385,6 +402,7 @@ function navClicks() {
     checkoutProjectsClick();
     navItemClicks();
     burgerClick();
+    menuClick();
 }
 
 function bodyClicks() {

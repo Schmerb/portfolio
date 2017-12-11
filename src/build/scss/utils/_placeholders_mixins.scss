@@ -20,6 +20,9 @@
 @mixin benz-transition($time: 400s) {
     @include transition($time, all, cubic-bezier(0.700, 0.110, 0.890, 0.605));
 }
+@mixin benz-transition-2($time: 400s) {
+    @include transition($time, all, cubic-bezier(0.340, 0.500, 0.170, 0.930));
+}
 
 @mixin transitions($trans...) {
     -webkit-transition: $trans;

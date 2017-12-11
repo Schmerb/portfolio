@@ -23,7 +23,7 @@
     }
     .headline {
         @extend %center;
-        top: 10px;
+        top: 40px;
         width: 100%;
         text-align: center;
         pointer-events: none;
@@ -38,16 +38,19 @@
             top: 50px;
         }
         .me-overview {
+            // -webkit-text-stroke-width: 0.01px;
+            // -webkit-text-stroke-color: black;
             font-size: 64px;
         }
         .me-overview-sm {
-            display: block;
+            display: block; 
             font-size: 40px;
         }
         .my-name {
+            // color: $blue;              
+            color: $purp;           
             color: #e69839;
-            color: $purp;            
-            font-weight: bold;
+            font-weight: lighter;
         }
         .skills-overview {
             font-size: 18px;
@@ -69,7 +72,7 @@
         overflow: hidden;
         z-index: 1;
         @include mediaMin($iphone6) {
-            bottom: 100px;
+            bottom: 20px;
         }
         &::before {
             @include benz-transition(0.4s);
