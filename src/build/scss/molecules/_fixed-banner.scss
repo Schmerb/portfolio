@@ -12,7 +12,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 11;
     opacity: 0;
     pointer-events: none;
     &.fix {
@@ -39,7 +39,6 @@
     left: 100%;
     padding-top: 50px;
     pointer-events: all;
-    // opacity: 0.5;
     &.open {
         left: 0;
         opacity: 1;
