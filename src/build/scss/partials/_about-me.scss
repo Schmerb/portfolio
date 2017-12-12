@@ -8,26 +8,23 @@
 #about-me {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
-    // background-color: $lightbrown;
-    // background-color: $brown;
-    // background-color: $blue;
-    background-color: $purp;
     background-color: #2196f3;
     margin: 50px 0;
     padding: 100px 0;
     h2, p {
         color: white;
-        text-align: center;
         max-width: 600px;
         margin: 0 auto 15px;
     }
     h2 {
         font-size: 46px;
+        text-align: center;
         margin-bottom: 60px;
     }
     p {
         font-size: 22px;
         font-weight: lighter;
+        text-align: justify;
         padding: 0 15px;
     }
 }
