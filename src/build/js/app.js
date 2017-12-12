@@ -347,12 +347,33 @@ function fixBannerImg() {
     $('.banner').css('max-height', h);
 }
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// Waits for background image asset to be loaded and then
+// fades out spinner and reveals user to homepage
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function onBackgroundImgLoad() {
+    $('.loading-page img').on('load', e => {
+        let delay = 500;
+        setTimeout(() => {
+            $('.icon.icon-loading-icon').addClass('fade');
+        }, delay);
+        setTimeout(() => {
+            $('.loading-page').addClass('fade');
+        }, delay + 500);
+        setTimeout(() => {
+            $('.loading-page').remove();
+        }, delay + 2000);
+    });
+}
+
 
 
 
 //================================================================================
 // Event Listeners
 //================================================================================
+
+
 function checkoutProjectsClick() {
     $(CHECKOUT_BTN).on('click', e => {
         e.preventDefault();
@@ -456,8 +477,7 @@ function utils() {
 }
 
 function init() {
-    // displaySlider(); // initializes slick slider
-    // responsiveReslick(); // tears down and reslicks slider on window resize
+    onBackgroundImgLoad();
 }
 
 //================================================================================
