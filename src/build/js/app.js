@@ -291,8 +291,7 @@ function fixBanner() {
         
         // scrolled upwards for 10 or more px
         if(state.scroll.baseYPos - current >= 10) {
-            let winToTop       = $(document).height() - $(window).scrollTop();
-            let distFromBottom = winToTop - $(window).height();
+            let distFromBottom = $(document).height() - current - $(window).height();
             if(distFromBottom > 200) {
                 $('.fixed-banner').addClass('show');
             }

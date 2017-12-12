@@ -38,8 +38,6 @@
             top: 50px;
         }
         .me-overview {
-            // -webkit-text-stroke-width: 0.01px;
-            // -webkit-text-stroke-color: black;
             font-size: 64px;
         }
         .me-overview-sm {
@@ -61,7 +59,7 @@
         background-color: rgba(white,0.6); 
         color: #e69839;
         font-size: 24px;
-        bottom: 20px;
+        bottom: 5%;
         width: 90%;
         max-width: 280px;
         padding: 10px;
@@ -71,8 +69,8 @@
         cursor: pointer;
         overflow: hidden;
         z-index: 1;
-        @include mediaMin($iphone6) {
-            bottom: 20px;
+        @include mediaMin($tablet) {
+            bottom: 100px;
         }
         &::before {
             @include benz-transition(0.4s);

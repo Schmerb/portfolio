@@ -24,6 +24,9 @@
     &.show {
         top: 0;
         opacity: 1;
+        .burger-btn {
+            pointer-events: all;
+        }
     }
 }
 .main-nav {
