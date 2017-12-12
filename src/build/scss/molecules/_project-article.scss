@@ -45,7 +45,7 @@
         margin-bottom: 60px;
         li {
             @include transform(translateY(300px));
-            @include transition(1s, all, ease-in-out, 0.3s);
+            @include transition(0.8s, all, ease-in-out, 0.3s);
             opacity: 0;
             &.btn-left {
                 margin-right: 10px;
@@ -136,7 +136,7 @@
     }
     // Laptop
     .laptop-img-wrap { // on left
-        @include transition(1s, all, ease-in-out, 1s);
+        @include transition(1s, all, ease-in-out, 0.6s);
         position: absolute;
         bottom: -200px;
         left: -200px;
@@ -166,7 +166,7 @@
     }
     // Mobile
     .mobile-img-wrap { // on right
-        @include transition(1s, all, ease-in-out, 1.4s);
+        @include transition(1s, all, ease-in-out, 0.8s);
         position: absolute;
         bottom: -200px;
         right: -200px;

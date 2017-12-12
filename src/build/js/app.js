@@ -358,9 +358,9 @@ function onBackgroundImgLoad() {
             $('.icon.icon-loading-icon').addClass('fade');
             setTimeout(() => {
                 $('.loading-page').addClass('fade');
+                $('html').add('body').removeClass('no-scroll');
                 setTimeout(() => {
                     $('.loading-page').remove();
-                    $('html').add('body').removeClass('no-scroll');
                 }, 2000);
             }, 500);
         }, 500);
