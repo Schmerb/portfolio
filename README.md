@@ -1,4 +1,4 @@
-# Mike Schmerbeck Portfolio Website
+# Mike Schmerbeck's Portfolio Website
 A portfolio website showcasing the various projects I created while attending [Thinkful's](https://www.thinkful.com/) Fullstack Web Development program. 
 
 ## Technology
@@ -11,6 +11,8 @@ A portfolio website showcasing the various projects I created while attending [T
 * Backend
     * [Node.js](https://nodejs.org/en/)
     * [Express.js](https://expressjs.com/)
+    * [EJS](http://ejs.co/)
+        * Templating language that generates HTML with JS
 * Development
     * [Gulp](https://gulpjs.com/)
         * Task manager
