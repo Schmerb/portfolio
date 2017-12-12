@@ -264,7 +264,7 @@ function checkScrollPos() {
 function toggleUpArrow() {
     let winToTop       = $(document).height() - $(window).scrollTop();
     let distFromBottom = winToTop - $(window).height();
-    if(distFromBottom >= 200) {
+    if(distFromBottom >= 100) {
         $(UP_ARROW).add(UP_ARROW_WRAP).addClass('fade');
     } else {
         show(UP_ARROW_WRAP);

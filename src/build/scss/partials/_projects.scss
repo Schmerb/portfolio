@@ -10,6 +10,7 @@
     h2 {
         text-align: center;
         color: $purp;
+        color: $blue2;
     }
     .projects-header {
         font-weight: 300;
@@ -17,14 +18,12 @@
         background-color: $primary;
         width: 100%;
         height: 400px;
-        // margin-top: 40px;
         margin-bottom: 40px;
         .inner-wrap {
             @extend %abs-middle;
             width: 95%;
         }
         h2 {
-            // color: $brown;
             font-size: 34px;
             margin-bottom: 20px;
             @include mediaMin(600px) {
@@ -36,7 +35,6 @@
         }
         p {
             color: $bone;
-            
             font-size: 22px;
             max-width: 900px;
             margin: 0 auto;
