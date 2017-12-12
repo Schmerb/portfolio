@@ -62,11 +62,12 @@ function toggleMenu() {
         .toggleClass('no-scroll');
 }
 
+const values = require('object.values');
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // Adds hidden class to all classes passed in as args
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function hide() {
-    Object.values(arguments).forEach((target) => {
+    values(arguments).forEach((target) => {
         $(target).addClass('hidden');
     });
 }
@@ -75,7 +76,7 @@ function hide() {
 // Removes hidden class from all classes passed in as args
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function show() {
-    Object.values(arguments).forEach((target) => {
+    values(arguments).forEach((target) => {
         $(target).removeClass('hidden');
     });
 }

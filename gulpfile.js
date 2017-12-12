@@ -8,6 +8,7 @@ const watch    	  = require('gulp-watch');
 const sassGlob 	  = require('gulp-sass-glob');
 const sass     	  = require('gulp-sass');
 const rename   	  = require('gulp-rename');
+const browserify  = require('gulp-browserify');
 const babel       = require('gulp-babel');
 
 const reload = browserSync.reload;
@@ -83,7 +84,10 @@ gulp.task('build_js', () => {
 	return gulp.src(JS_SRC)
 		.pipe(concat('bundle.js'))
 		.pipe(babel({
-			presets: 'env'
+			presets: ['env']
+		}))
+		.pipe(browserify({
+			insertGlobals: true
 		}))
 		.pipe(minify({
 			ext: {
