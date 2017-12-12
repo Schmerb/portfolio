@@ -1,50 +1,43 @@
 'use strict';
 
-const state = {
+var state = {
     isMobile: false,
     hasTouch: false,
     scroll: {
         yPos: 0,
         up: false,
         baseYPos: 0,
-        downBaseYPos: 0,
+        downBaseYPos: 0
     }
 };
 
-
-
 // SELECTOR CONSTANTS
 
-const CHECKOUT_BTN = '.checkout-btn';    
+var CHECKOUT_BTN = '.checkout-btn';
 
 // Sections
-const ABOUT_ME = '#about-me';
-const PROJECTS = '#projects';
-const CONTACT  = '#contact';
+var ABOUT_ME = '#about-me';
+var PROJECTS = '#projects';
+var CONTACT = '#contact';
 
-const FORM_FIELDS  = '.contact-form input, .contact-form textarea';
-const CONTACT_FORM = '.contact-form';
-const SUBMIT_BTN   = '.submit-btn';
+var FORM_FIELDS = '.contact-form input, .contact-form textarea';
+var CONTACT_FORM = '.contact-form';
+var SUBMIT_BTN = '.submit-btn';
 
-const UP_ARROW      = '.icon-up-arrow-box';
-const UP_ARROW_WRAP = '.up-icon-wrap';
-const NAV_PROJECT   = '.project';
-const NAV_ABOUT     = '.about';
-const NAV_WORKFLOW  = '.workflow';
-const NAV_CONTACT   = '.contact';
-
-
+var UP_ARROW = '.icon-up-arrow-box';
+var UP_ARROW_WRAP = '.up-icon-wrap';
+var NAV_PROJECT = '.project';
+var NAV_ABOUT = '.about';
+var NAV_WORKFLOW = '.workflow';
+var NAV_CONTACT = '.contact';
 
 //================================================================================
 // HTML Template literals
 //================================================================================
 
 function getTemplate(todo) {
-    return `<div>
-                ${todo}
-            </div>`;
+    return '<div>\n                ' + todo + '\n            </div>';
 }
-
 
 //================================================================================
 // DOM / Display functions
@@ -54,19 +47,15 @@ function getTemplate(todo) {
 // Toggles the side menu
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function toggleMenu() {
-    $('.main-nav')
-        .add('.burger')
-        .toggleClass('open');
-    $('html')
-        .add('body')
-        .toggleClass('no-scroll');
+    $('.main-nav').add('.burger').toggleClass('open');
+    $('html').add('body').toggleClass('no-scroll');
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // Adds hidden class to all classes passed in as args
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function hide() {
-    Object.values(arguments).forEach((target) => {
+    Object.values(arguments).forEach(function (target) {
         $(target).addClass('hidden');
     });
 }
@@ -75,12 +64,10 @@ function hide() {
 // Removes hidden class from all classes passed in as args
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function show() {
-    Object.values(arguments).forEach((target) => {
+    Object.values(arguments).forEach(function (target) {
         $(target).removeClass('hidden');
     });
 }
-
-
 
 //================================================================================
 // API handlers / Display handlers
@@ -88,9 +75,6 @@ function show() {
 
 
 // TODO
-
-
-
 
 
 //================================================================================
@@ -118,25 +102,17 @@ function sendEmail($form) {
         method: "POST",
         data: $form.serialize(),
         dataType: 'json',
-        success: res => {
-            $(SUBMIT_BTN).removeClass('sending')
-                         .addClass('sent')
-                         .addClass('fadeOut')
-                         .find('span')
-                         .text('SENT!');
-            setTimeout(() => {
+        success: function success(res) {
+            $(SUBMIT_BTN).removeClass('sending').addClass('sent').addClass('fadeOut').find('span').text('SENT!');
+            setTimeout(function () {
                 // wait 3s then clear form and reset button
                 $form[0].reset();
-                $(FORM_FIELDS).siblings('span')
-                              .removeClass('move');
-                $(SUBMIT_BTN).removeClass('sent')
-                             .removeClass('fadeOut')
-                             .find('span')
-                             .text('Send');
-            }, 3000);  
+                $(FORM_FIELDS).siblings('span').removeClass('move');
+                $(SUBMIT_BTN).removeClass('sent').removeClass('fadeOut').find('span').text('Send');
+            }, 3000);
         },
-        error: (jqXHR, status, err) => {
-            console.log({jqXHR, status, err});
+        error: function error(jqXHR, status, err) {
+            console.log({ jqXHR: jqXHR, status: status, err: err });
             console.log(jqXHR.responseJSON.error);
 
             // stop sending animation
@@ -148,11 +124,6 @@ function sendEmail($form) {
     });
 }
 
-
-
-
-
-
 //================================================================================
 // Utility functions
 //================================================================================
@@ -161,7 +132,10 @@ function sendEmail($form) {
 // Gives a smooth animation to page navigation bringing the 
 // target element to the top of the window
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-function smoothScroll(target, duration = 1200, offset = 0) {
+function smoothScroll(target) {
+    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1200;
+    var offset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
     $('body, html').animate({
         scrollTop: $(target).offset().top - offset
     }, duration);
@@ -172,7 +146,7 @@ function smoothScroll(target, duration = 1200, offset = 0) {
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function checkSizeHandler() {
     checkSize();
-    $(window).resize(checkSize); 
+    $(window).resize(checkSize);
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -204,55 +178,53 @@ function checkForTouch() {
 // it into place on scroll
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function slideIntoPlace() {
-    const win     = $(window);
-    const targets = ['.target',
-                     '.tech-logos li',
-                     '.links-list li',
-                     '.proj-details',
-                     '.workflow-section li'
-                    ];
-    const allMods = $(targets.join(', '));
+    var win = $(window);
+    var targets = ['.target', '.tech-logos li', '.links-list li', '.proj-details', '.workflow-section li'];
+    var allMods = $(targets.join(', '));
 
-    allMods.each((i, el) => {
-        const $el = $(el);
-        $el.isVisible(true) ? $el.addClass("already-visible") : null; 
+    allMods.each(function (i, el) {
+        var $el = $(el);
+        $el.isVisible(true) ? $el.addClass("already-visible") : null;
     });
 
-    win.scroll(e => {
-        allMods.each((i, el) => {
-            const $el = $(el);
-            $el.isVisible(true) ? $el.addClass("slide-in") : null; 
+    win.scroll(function (e) {
+        allMods.each(function (i, el) {
+            var $el = $(el);
+            $el.isVisible(true) ? $el.addClass("slide-in") : null;
         });
     });
 }
 
-$.fn.isVisible = function(partial) {
-    var $t            = $(this),
-        $w            = $(window),
-        viewTop       = $w.scrollTop(),        // Top of window to top of document
-        viewBottom    = viewTop + $w.height(), // bottom of window to top of document
-        _top          = $t.offset().top,       // Distance from top of element to top of document
-        _bottom       = _top + $t.height(),    // Distance form bottom of element to top of document
-        compareTop    = partial === true ? _bottom : _top,
+$.fn.isVisible = function (partial) {
+    var $t = $(this),
+        $w = $(window),
+        viewTop = $w.scrollTop(),
+        // Top of window to top of document
+    viewBottom = viewTop + $w.height(),
+        // bottom of window to top of document
+    _top = $t.offset().top,
+        // Distance from top of element to top of document
+    _bottom = _top + $t.height(),
+        // Distance form bottom of element to top of document
+    compareTop = partial === true ? _bottom : _top,
         compareBottom = partial === true ? _top : _bottom;
 
-    return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+    return compareBottom <= viewBottom && compareTop >= viewTop;
 };
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // Places event listener to fire on scroll
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-let timer;
+var timer = void 0;
 function checkScrollPos() {
-    $(window).scroll(() => {
+    $(window).scroll(function () {
         toggleUpArrow();
         fixBanner();
         // start timer to fade out burger icon after 3s
         window.clearTimeout(timer);
-        timer = window.setTimeout(function() {
-            if($('.fixed-banner').hasClass('show') && !$('.main-nav').hasClass('open')) {
-                $('.fixed-banner').removeClass('fix')
-                                  .removeClass('show');
+        timer = window.setTimeout(function () {
+            if ($('.fixed-banner').hasClass('show') && !$('.main-nav').hasClass('open')) {
+                $('.fixed-banner').removeClass('fix').removeClass('show');
             }
         }, 3000);
     });
@@ -262,13 +234,13 @@ function checkScrollPos() {
 // Checks vertical scroll position and hides/shows up arrow
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function toggleUpArrow() {
-    let winToTop       = $(document).height() - $(window).scrollTop();
-    let distFromBottom = winToTop - $(window).height();
-    if(distFromBottom >= 100) {
+    var winToTop = $(document).height() - $(window).scrollTop();
+    var distFromBottom = winToTop - $(window).height();
+    if (distFromBottom >= 100) {
         $(UP_ARROW).add(UP_ARROW_WRAP).addClass('fade');
     } else {
         show(UP_ARROW_WRAP);
-        setTimeout(() => {
+        setTimeout(function () {
             $(UP_ARROW).add(UP_ARROW_WRAP).removeClass('fade');
         }, 100);
     }
@@ -279,43 +251,44 @@ function toggleUpArrow() {
 // on upward scrolls
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function fixBanner() {
-    let current = $(window).scrollTop();
-    if(current > $('.banner').height()) {
+    var current = $(window).scrollTop();
+    if (current > $('.banner').height()) {
         $('.fixed-banner').addClass('fix');
     } else {
         $('.fixed-banner').removeClass('fix');
     }
-    
-     // if current yPos is less than previous, scrolling upwards
-     if(current <= state.scroll.yPos) {
-        
+
+    // if current yPos is less than previous, scrolling upwards
+    if (current <= state.scroll.yPos) {
+
         // scrolled upwards for 10 or more px
-        if(state.scroll.baseYPos - current >= 10) {
-            let distFromBottom = $(document).height() - current - $(window).height();
-            if(distFromBottom > 200) {
+        if (state.scroll.baseYPos - current >= 10) {
+            var distFromBottom = $(document).height() - current - $(window).height();
+            if (distFromBottom > 200) {
                 $('.fixed-banner').addClass('show');
             }
         }
 
         // just started going up, keep track of beginning of upwards distance
-        if(state.scroll.up === false) {
+        if (state.scroll.up === false) {
             state.scroll.baseYPos = current;
         }
         state.scroll.up = true;
-    } else {// scrolling downwards
+    } else {
+        // scrolling downwards
 
         // just started going dowm, keep track of beginning of downwards distance
-        if(state.scroll.up === true) {
-            state.scroll.downBaseYPos = current; 
+        if (state.scroll.up === true) {
+            state.scroll.downBaseYPos = current;
         }
 
         // scrolled downwards for 40 or more px
         // Making sure its more than 100px from top ensures
         // an overscroll event above document wont trigger it
-        if(current - state.scroll.downBaseYPos >= 40 && current >= 100) {
+        if (current - state.scroll.downBaseYPos >= 40 && current >= 100) {
             $('.fixed-banner').removeClass('show');
         }
-        
+
         state.scroll.up = false;
         state.scroll.baseYPos = 0;
     }
@@ -326,14 +299,11 @@ function fixBanner() {
 // make sure that user can scroll in case menu disappears
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function checkIfUserCanScroll() {
-    if($('.fixed-banner').hasClass('fix') 
-        && !$('.fixed-banner').hasClass('show')
-        && $('body').hasClass('no-scroll')
-        && $('html').hasClass('no-scroll')) {
-            // reset no-scroll classes
-            $('html').add('body').removeClass('no-scroll');
+    if ($('.fixed-banner').hasClass('fix') && !$('.fixed-banner').hasClass('show') && $('body').hasClass('no-scroll') && $('html').hasClass('no-scroll')) {
+        // reset no-scroll classes
+        $('html').add('body').removeClass('no-scroll');
     }
-}  
+}
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // Sets max-height of banner image to current height to
@@ -342,32 +312,29 @@ function checkIfUserCanScroll() {
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function fixBannerImg() {
     $('.banner').css('max-height', '');
-    let h = $('.banner').height();
+    var h = $('.banner').height();
     $('.banner').css('max-height', h);
 }
-
-
-
 
 //================================================================================
 // Event Listeners
 //================================================================================
 function checkoutProjectsClick() {
-    $(CHECKOUT_BTN).on('click', e => {
+    $(CHECKOUT_BTN).on('click', function (e) {
         e.preventDefault();
         smoothScroll(PROJECTS, 1000);
-    });    
+    });
 }
 // toggles slide menu
 function burgerClick() {
-    $('.burger-btn').on('click', e => {
+    $('.burger-btn').on('click', function (e) {
         e.preventDefault();
         toggleMenu();
     });
 }
 // toggles slide menu to close
 function menuClick() {
-    $('.main-nav').on('click', e => {
+    $('.main-nav').on('click', function (e) {
         toggleMenu();
     });
 }
@@ -376,20 +343,20 @@ function menuClick() {
 // Contact Form
 //
 function contactFormFocus() {
-    $(FORM_FIELDS).on('focusin', function(e) {
+    $(FORM_FIELDS).on('focusin', function (e) {
         e.preventDefault();
         $(this).siblings('span').addClass('move');
     });
-    $(FORM_FIELDS).on('focusout', function(e) {
+    $(FORM_FIELDS).on('focusout', function (e) {
         e.preventDefault();
-        if(!($(this).val().trim())) {
+        if (!$(this).val().trim()) {
             $(this).siblings('span').removeClass('move');
         }
     });
 }
 
 function contactFormSubmit() {
-    $(CONTACT_FORM).on('submit', function(e) {
+    $(CONTACT_FORM).on('submit', function (e) {
         e.preventDefault();
         // $(SUBMIT_BTN).removeClass('error');
         sendEmail($(this));
@@ -398,25 +365,25 @@ function contactFormSubmit() {
 
 // Footer
 function upArrowClick() {
-    $(UP_ARROW).on('click', function(e) {
+    $(UP_ARROW).on('click', function (e) {
         e.preventDefault();
         smoothScroll('header');
     });
 }
 function navItemClicks() {
-    $(NAV_PROJECT).on('click', e => {
+    $(NAV_PROJECT).on('click', function (e) {
         e.preventDefault();
         smoothScroll('#projects');
     });
-    $(NAV_ABOUT).on('click', e => {
+    $(NAV_ABOUT).on('click', function (e) {
         e.preventDefault();
         smoothScroll('#about-me');
     });
-    $(NAV_WORKFLOW).on('click', e => {
+    $(NAV_WORKFLOW).on('click', function (e) {
         e.preventDefault();
         smoothScroll('#workflow');
     });
-    $(NAV_CONTACT).on('click', e => {
+    $(NAV_CONTACT).on('click', function (e) {
         e.preventDefault();
         smoothScroll('#contact');
     });
@@ -454,10 +421,10 @@ function utils() {
     slideIntoPlace();
 }
 
-function init() {
-    // displaySlider(); // initializes slick slider
-    // responsiveReslick(); // tears down and reslicks slider on window resize
-}
+function init() {}
+// displaySlider(); // initializes slick slider
+// responsiveReslick(); // tears down and reslicks slider on window resize
+
 
 //================================================================================
 // Entry point -- Main
@@ -471,7 +438,6 @@ $(function () {
     footerClicks();
 
     init();
-
 });
 // // // // // // // // // // // // // // //
 // 
@@ -482,114 +448,114 @@ $(function () {
 
 particlesJS("particles-js", {
     "particles": {
-      "number": {
-        "value": 50,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": {
-        "value": "#ffffff"
-      },
-      "shape": {
-        "type": "circle",
-        "stroke": {
-          "width": 0,
-          "color": "#000000"
+        "number": {
+            "value": 50,
+            "density": {
+                "enable": true,
+                "value_area": 800
+            }
         },
-        "polygon": {
-          "nb_sides": 5
+        "color": {
+            "value": "#ffffff"
         },
-        "image": {
-          "src": "img/github.svg", 
-          "width": 100,
-          "height": 100
+        "shape": {
+            "type": "circle",
+            "stroke": {
+                "width": 0,
+                "color": "#000000"
+            },
+            "polygon": {
+                "nb_sides": 5
+            },
+            "image": {
+                "src": "img/github.svg",
+                "width": 100,
+                "height": 100
+            }
+        },
+        "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+            }
+        },
+        "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+                "enable": false,
+                "speed": 40,
+                "size_min": 0.1,
+                "sync": false
+            }
+        },
+        "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 5,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+            }
         }
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false,
-        "anim": {
-          "enable": false,
-          "speed": 1,
-          "opacity_min": 0.1,
-          "sync": false
-        }
-      },
-      "size": {
-        "value": 3,
-        "random": true,
-        "anim": {
-          "enable": false,
-          "speed": 40,
-          "size_min": 0.1,
-          "sync": false
-        }
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 5,
-        "direction": "none",
-        "random": false,
-        "straight": false,
-        "out_mode": "out",
-        "bounce": false,
-        "attract": {
-          "enable": false,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
-      }
     },
     "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": true,
-          "mode": "grab"
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {
+                "enable": true,
+                "mode": "grab"
+            },
+            "onclick": {
+                "enable": true,
+                "mode": "push"
+            },
+            "resize": true
         },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
-        "resize": true
-      },
-      "modes": {
-        "grab": {
-          "distance": 140,
-          "line_linked": {
-            "opacity": 1
-          }
-        },
-        "bubble": {
-          "distance": 400,
-          "size": 40,
-          "duration": 2,
-          "opacity": 8,
-          "speed": 10
-        },
-        "repulse": {
-          "distance": 200,
-          "duration": 0.4
-        },
-        "push": {
-          "particles_nb": 4
-        },
-        "remove": {
-          "particles_nb": 2
+        "modes": {
+            "grab": {
+                "distance": 140,
+                "line_linked": {
+                    "opacity": 1
+                }
+            },
+            "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 10
+            },
+            "repulse": {
+                "distance": 200,
+                "duration": 0.4
+            },
+            "push": {
+                "particles_nb": 4
+            },
+            "remove": {
+                "particles_nb": 2
+            }
         }
-      }
     },
     "retina_detect": true
-  });
+});
 
 // // // // // // // // // // // // // // //
 // 
@@ -597,7 +563,7 @@ particlesJS("particles-js", {
 //
 // // // // // // // // // // // // // // // 
 
-const SLIDER = '.slider';
+var SLIDER = '.slider';
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * 
 // Drone banner carousel
@@ -611,44 +577,38 @@ function initSlider() {
         slidesToShow: 4,
         slidesToScroll: 4,
         variableWidth: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 860,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            },
-            {
-                breakpoint: 580,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 415,
-                settings: {
-                    speed: 2000,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    cssEase: 'ease-in-out'
-                }
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4
+            }
+        }, {
+            breakpoint: 860,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3
+            }
+        }, {
+            breakpoint: 580,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        }, {
+            breakpoint: 415,
+            settings: {
+                speed: 2000,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                cssEase: 'ease-in-out'
             }
             // You can unslick at a given breakpoint now by adding:
             // settings: "unslick"
             // instead of a settings object
-        ]
+        }]
     });
 }
-
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * 
 // Intializes slider and sets height to zero
@@ -661,7 +621,6 @@ function displaySlider() {
     $('.slick-slider').css('height', '');
 }
 
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * 
 //          Destroys slick carousels
 // @params   Slider element to be destroyed
@@ -672,7 +631,6 @@ function unslick(SLIDER) {
     }
 }
 
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * 
 //  Used to reslick sliders on window resize 
 //  inccrease. 
@@ -681,7 +639,7 @@ function unslick(SLIDER) {
 // * * * * * * * * * * * * * * * * * * * * * * * * * 
 function responsiveReslick() {
     $(window).resize(function () {
-        let width = parseInt($('body').css('width'));
+        var width = parseInt($('body').css('width'));
         if (!$(SLIDER).hasClass('slick-initialized')) {
             initSlider();
         }

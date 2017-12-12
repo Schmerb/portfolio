@@ -8,6 +8,7 @@ const watch    	  = require('gulp-watch');
 const sassGlob 	  = require('gulp-sass-glob');
 const sass     	  = require('gulp-sass');
 const rename   	  = require('gulp-rename');
+const babel       = require('gulp-babel');
 
 const reload = browserSync.reload;
 
@@ -81,6 +82,9 @@ const JS_DEST = 'public/js/';
 gulp.task('build_js', () => {
 	return gulp.src(JS_SRC)
 		.pipe(concat('bundle.js'))
+		.pipe(babel({
+			presets: 'env'
+		}))
 		.pipe(minify({
 			ext: {
 				src: '.js',
