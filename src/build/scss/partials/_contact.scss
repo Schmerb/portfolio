@@ -10,8 +10,18 @@
         margin-bottom: 100px;
     }
     .contact-header {
+        @include transition(0.6s);
+        position: relative;
+        left: 0;
+        top: 100px;
         text-align: center;
         margin-bottom: 40px;
+        opacity: 0;
+        &.slide-in, &.already-visited {
+            left: 0;
+            top: 0;
+            opacity: 1;
+        }
     }
     h2 {
         font-size: 36px;
@@ -22,6 +32,20 @@
     width: 95%;
     margin: 0 auto;
     text-align: center;
+    &.slide-in, &.already-visited {
+        label {
+            left: 0;
+            top: 0;
+            opacity: 1;
+            transition-delay: 0.4s;
+            &:nth-of-type(2) {
+                transition-delay: 0.8s;
+            }
+            &:nth-of-type(3) {
+                transition-delay: 1.2s;
+            }
+        }
+    }
     input, textarea {
         display: block;
         width: 100%;
@@ -42,11 +66,15 @@
         resize: vertical;
     }
     label {
+        @include benz-transition(0.6s);
         display: block;
         position: relative;
+        left: 0;
+        top: 400px;
         width: 80%;
         max-width: 500px;
         margin: 0 auto;
+        opacity: 0;
         @include mediaMax(859px) {
             margin-bottom: 30px;
         }
@@ -90,18 +118,26 @@
         font-size: 20px;
     }
     button {
+        @include transition(0.5s, all, ease-in-out, 0.6s);
         border-color: lighten($blue, 10%); 
         position: relative;
+        top: 200px;
         width: 200px;
         height: 50px;
         border-radius: 8px;
         margin-top: 20px;
         cursor: pointer;
         overflow: hidden;
+        opacity: 0;
         &:hover {
+            border-color: $purp;
             span {
-                color: $blue;
+                color: $purp;
             }
+        }
+        &.slide-in, &.already-visited {
+            top: 0;
+            opacity: 1;
         }
         span {
             @extend %abs-middle;
@@ -129,7 +165,7 @@
         }
         &.fadeOut {
             &::before {
-                @include transition(0.4ss);
+                @include transition(0.4s);
                 opacity: 1;
             }
         }
