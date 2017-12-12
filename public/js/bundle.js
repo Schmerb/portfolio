@@ -50,6 +50,17 @@ function getTemplate(todo) {
 // DOM / Display functions
 //================================================================================
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// Toggles the side menu
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function toggleMenu() {
+    $('.main-nav')
+        .add('.burger')
+        .toggleClass('open');
+    $('html')
+        .add('body')
+        .toggleClass('no-scroll');
+}
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // Adds hidden class to all classes passed in as args
@@ -216,7 +227,6 @@ function slideIntoPlace() {
 }
 
 $.fn.isVisible = function(partial) {
-    
     var $t            = $(this),
         $w            = $(window),
         viewTop       = $w.scrollTop(),        // Top of window to top of document
@@ -232,10 +242,19 @@ $.fn.isVisible = function(partial) {
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // Places event listener to fire on scroll
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+let timer;
 function checkScrollPos() {
     $(window).scroll(() => {
         toggleUpArrow();
         fixBanner();
+        // start timer to fade out burger icon after 3s
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function() {
+            if($('.fixed-banner').hasClass('show') && !$('.main-nav').hasClass('open')) {
+                $('.fixed-banner').removeClass('fix')
+                                  .removeClass('show');
+            }
+        }, 3000);
     });
 }
 
@@ -272,7 +291,11 @@ function fixBanner() {
         
         // scrolled upwards for 10 or more px
         if(state.scroll.baseYPos - current >= 10) {
-            $('.fixed-banner').addClass('show');
+            let winToTop       = $(document).height() - $(window).scrollTop();
+            let distFromBottom = winToTop - $(window).height();
+            if(distFromBottom > 200) {
+                $('.fixed-banner').addClass('show');
+            }
         }
 
         // just started going up, keep track of beginning of upwards distance
@@ -287,8 +310,10 @@ function fixBanner() {
             state.scroll.downBaseYPos = current; 
         }
 
-        // scrolled downwards for 15 or more px
-        if(current - state.scroll.downBaseYPos >= 35) {
+        // scrolled downwards for 40 or more px
+        // Making sure its more than 100px from top ensures
+        // an overscroll event above document wont trigger it
+        if(current - state.scroll.downBaseYPos >= 40 && current >= 100) {
             $('.fixed-banner').removeClass('show');
         }
         
@@ -297,6 +322,19 @@ function fixBanner() {
     }
     state.scroll.yPos = current;
 }
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// make sure that user can scroll in case menu disappears
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function checkIfUserCanScroll() {
+    if($('.fixed-banner').hasClass('fix') 
+        && !$('.fixed-banner').hasClass('show')
+        && $('body').hasClass('no-scroll')
+        && $('html').hasClass('no-scroll')) {
+            // reset no-scroll classes
+            $('html').add('body').removeClass('no-scroll');
+    }
+}  
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // Sets max-height of banner image to current height to
@@ -308,6 +346,7 @@ function fixBannerImg() {
     let h = $('.banner').height();
     $('.banner').css('max-height', h);
 }
+
 
 
 
@@ -324,23 +363,13 @@ function checkoutProjectsClick() {
 function burgerClick() {
     $('.burger-btn').on('click', e => {
         e.preventDefault();
-        $('.main-nav')
-            .add('.burger')
-            .toggleClass('open');
-        $('html')
-            .add('body')
-            .toggleClass('no-scroll');
+        toggleMenu();
     });
 }
 // toggles slide menu to close
 function menuClick() {
     $('.main-nav').on('click', e => {
-        $('.main-nav')
-            .add('.burger')
-            .toggleClass('open');
-        $('html')
-            .add('body')
-            .toggleClass('no-scroll');
+        toggleMenu();
     });
 }
 
@@ -443,6 +472,7 @@ $(function () {
     footerClicks();
 
     init();
+
 });
 // // // // // // // // // // // // // // //
 // 
