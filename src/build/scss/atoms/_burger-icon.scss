@@ -6,7 +6,7 @@
 
 .burger-btn {
     @include middleR(20px);
-    background-color: rgba(white,0.1);
+    background-color: rgba(grey,0.4);
     display: block;
     width: 40px;
     height: 32px;
@@ -22,7 +22,7 @@
     &::before,
     &::after {
         @extend %transition;
-        background-color: white;
+        background-color: $offwhite;
         position: relative;
         display: block;
         content: '';
