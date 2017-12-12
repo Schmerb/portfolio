@@ -352,17 +352,18 @@ function fixBannerImg() {
 // fades out spinner and reveals user to homepage
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function onBackgroundImgLoad() {
+    $('html').add('body').addClass('no-scroll');
     $('.loading-page img').on('load', e => {
-        let delay = 500;
         setTimeout(() => {
             $('.icon.icon-loading-icon').addClass('fade');
-        }, delay);
-        setTimeout(() => {
-            $('.loading-page').addClass('fade');
-        }, delay + 500);
-        setTimeout(() => {
-            $('.loading-page').remove();
-        }, delay + 2000);
+            setTimeout(() => {
+                $('.loading-page').addClass('fade');
+                setTimeout(() => {
+                    $('.loading-page').remove();
+                    $('html').add('body').removeClass('no-scroll');
+                }, 2000);
+            }, 500);
+        }, 500);
     });
 }
 

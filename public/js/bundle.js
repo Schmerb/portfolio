@@ -3269,17 +3269,18 @@ function fixBannerImg() {
 // fades out spinner and reveals user to homepage
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function onBackgroundImgLoad() {
+    $('html').add('body').addClass('no-scroll');
     $('.loading-page img').on('load', function (e) {
-        var delay = 500;
         setTimeout(function () {
             $('.icon.icon-loading-icon').addClass('fade');
-        }, delay);
-        setTimeout(function () {
-            $('.loading-page').addClass('fade');
-        }, delay + 500);
-        setTimeout(function () {
-            $('.loading-page').remove();
-        }, delay + 2000);
+            setTimeout(function () {
+                $('.loading-page').addClass('fade');
+                setTimeout(function () {
+                    $('.loading-page').remove();
+                    $('html').add('body').removeClass('no-scroll');
+                }, 2000);
+            }, 500);
+        }, 500);
     });
 }
 
@@ -3524,5 +3525,5 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
 });
-}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_154f01dc.js","/")
+}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c7e9c476.js","/")
 },{"buffer":3,"fsovz6":2,"object.values":30}]},{},[33])
