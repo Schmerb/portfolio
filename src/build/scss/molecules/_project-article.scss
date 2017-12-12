@@ -43,8 +43,9 @@
         margin-top: 20px;
         margin-bottom: 60px;
         li {
-            @include transform(translateY(200px));
-            @extend %transition;
+            @include transform(translateY(300px));
+            @include transition(1s, all, ease-in-out, 0.3s);
+            opacity: 0;
             &.btn-left {
                 margin-right: 10px;
             }
@@ -52,13 +53,12 @@
                 margin-left: 10px;
             }
             &.slide-in, &.already-visited {
-                opacity: 1;
                 @include transform(translateY(0px));
+                opacity: 1;
             }
         }
     }
     a.button {
-        @extend %transition;
         display: inline-block;
         position: relative;
         width: 140px;
@@ -88,7 +88,6 @@
             margin-right: 15px;
         }
         svg {
-            @extend %transition;
             @include middleR(10px);
         }
     }
@@ -112,7 +111,7 @@
     }
     // Desktop
     .desktop-img-wrap {
-        @include transition(0.5s);
+        @include transition(1s, all, ease-in-out, 1.2s);
         position: relative;
         bottom: -200px;
         width: 75%;
@@ -136,7 +135,7 @@
     }
     // Laptop
     .laptop-img-wrap { // on left
-        @include transition(0.5s);
+        @include transition(1s, all, ease-in-out, 1s);
         position: absolute;
         bottom: -200px;
         left: -200px;
@@ -166,8 +165,7 @@
     }
     // Mobile
     .mobile-img-wrap { // on right
-        @include transition(0.5s);
-        transition-delay: 0.2s;
+        @include transition(1s, all, ease-in-out, 1.4s);
         position: absolute;
         bottom: -200px;
         right: -200px;

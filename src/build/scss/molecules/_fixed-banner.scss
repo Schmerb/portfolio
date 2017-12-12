@@ -6,7 +6,6 @@
 
 .fixed-banner {
     @include transitions(all 0.3s ease-in-out 0s, box-shadow 0s);
-    background: linear-gradient(-45deg, transparent -50%, transparent);
     position: fixed;
     height: 80px;
     width: 100%;
@@ -16,8 +15,6 @@
     opacity: 0;
     pointer-events: none;
     &.fix {
-        // box-shadow: 0 5px 40px rgba(black, 0.9);
-        // background: linear-gradient(-45deg, $lightpurp -50%, $purp);
         top: -100%;
         opacity: 0;
     }

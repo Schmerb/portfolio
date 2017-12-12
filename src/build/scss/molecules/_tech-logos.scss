@@ -15,7 +15,7 @@
     }
     li {
         @include transform(translateX(-200px));
-        @extend %transition;
+        @include transition(0.8s);
         margin-right: 15px;
         opacity: 0;
         &:nth-of-type(1n) {

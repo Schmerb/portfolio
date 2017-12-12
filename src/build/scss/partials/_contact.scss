@@ -51,9 +51,9 @@
         width: 100%;
         padding-left: 10px;
         border: 1px solid lightgrey;
+        border-radius: 8px;
         outline-color: rgba($purp, 0.1);
         outline-color: $lightbrown;
-        
     }
     input {
         height: 40px;
@@ -77,6 +77,25 @@
         opacity: 0;
         @include mediaMax(859px) {
             margin-bottom: 30px;
+        }
+        @include mediaMin(860px) {
+            &:nth-of-type(1) {
+                input {
+                    border-bottom-left-radius: 0px;
+                    border-bottom-right-radius: 0px;
+                }
+            }
+            &:nth-of-type(2) {
+                input {
+                    border-radius: 0px;
+                }
+            }
+            &:nth-of-type(3) {
+                textarea {
+                    border-top-left-radius: 0px;
+                    border-top-right-radius: 0px;
+                }
+            }
         }
         span {
             @extend %transition;
