@@ -7,12 +7,18 @@
 
 .loading-page {
     @extend %cover;
-    
     position: fixed;
-    background-color: rgba($purp, 0.98);
-    background: linear-gradient(-45deg, rgba($lightpurp,0.95) -60%, rgba($purp,1));
     z-index: 20;
     opacity: 1;
+    &::before {
+        content: '';
+        @extend %cover;
+        @include transform(scale(1.1));
+        background-image: url($smallBgImg);
+        background-size: cover;
+        background-position: center;
+        filter: blur(20px);
+    }
     &.fade {
         @include transition(0.8s, all, ease-in-out, 0.8s);
         opacity: 0;
