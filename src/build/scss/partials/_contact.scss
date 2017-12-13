@@ -33,6 +33,11 @@
     margin: 0 auto;
     text-align: center;
     &.slide-in, &.already-visited {
+        button {
+            left: 0;
+            top: 0;
+            opacity: 1;
+        }
         label {
             left: 0;
             top: 0;
@@ -138,11 +143,11 @@
     }
     button {
         @include transitions(all 0.3s ease-in-out 0s, 
-                             top 0.8s ease-in-out 0.8s,
-                             opacity 0.8s ease-in-out 0.6s);
+                             top 0.8s cubic-bezier(0.700, 0.110, 0.890, 0.605) 2.4s,
+                             opacity 0.8s cubic-bezier(0.700, 0.110, 0.890, 0.605) 2.4s);
         border-color: lighten($blue, 10%); 
         position: relative;
-        top: 200px;
+        top: 100px;
         width: 200px;
         height: 50px;
         border-radius: 8px;
