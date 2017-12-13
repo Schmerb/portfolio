@@ -353,20 +353,31 @@ function fixBannerImg() {
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function onBackgroundImgLoad() {
     $('html').add('body').addClass('no-scroll');
-    $('.loading-page img').on('load', e => {
-        setTimeout(() => {
-            $('.icon.icon-loading-icon').addClass('fade');
-        }, 500);
-        
-        setTimeout(() => {
-            $('.loading-page').addClass('fade');
-            $('html').add('body').removeClass('no-scroll');
-        }, 500);
-        
-        setTimeout(() => {
-            $('.loading-page').remove();
-        }, 2000);
-    });
+
+    let $img = $('.loading-page img');
+    if(!$img.prop('complete')) {
+        $img.on('load', e => fadeOutLoadScreen());
+    } else {
+        fadeOutLoadScreen();
+    }
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// Fades out loading screen and removes it from DOM
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+function fadeOutLoadScreen() {
+    setTimeout(() => {
+        $('.icon.icon-loading-icon').addClass('fade');
+    }, 500);
+    
+    setTimeout(() => {
+        $('.loading-page').addClass('fade');
+        $('html').add('body').removeClass('no-scroll');
+    }, 500);
+    
+    setTimeout(() => {
+        $('.loading-page').remove();
+    }, 2000);
 }
 
 
