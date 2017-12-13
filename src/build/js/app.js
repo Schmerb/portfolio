@@ -356,14 +356,16 @@ function onBackgroundImgLoad() {
     $('.loading-page img').on('load', e => {
         setTimeout(() => {
             $('.icon.icon-loading-icon').addClass('fade');
-            setTimeout(() => {
-                $('.loading-page').addClass('fade');
-                $('html').add('body').removeClass('no-scroll');
-                setTimeout(() => {
-                    $('.loading-page').remove();
-                }, 2000);
-            }, 500);
         }, 500);
+        
+        setTimeout(() => {
+            $('.loading-page').addClass('fade');
+            $('html').add('body').removeClass('no-scroll');
+        }, 500);
+        
+        setTimeout(() => {
+            $('.loading-page').remove();
+        }, 2000);
     });
 }
 

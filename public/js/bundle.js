@@ -3273,14 +3273,16 @@ function onBackgroundImgLoad() {
     $('.loading-page img').on('load', function (e) {
         setTimeout(function () {
             $('.icon.icon-loading-icon').addClass('fade');
-            setTimeout(function () {
-                $('.loading-page').addClass('fade');
-                $('html').add('body').removeClass('no-scroll');
-                setTimeout(function () {
-                    $('.loading-page').remove();
-                }, 2000);
-            }, 500);
         }, 500);
+
+        setTimeout(function () {
+            $('.loading-page').addClass('fade');
+            $('html').add('body').removeClass('no-scroll');
+        }, 500);
+
+        setTimeout(function () {
+            $('.loading-page').remove();
+        }, 2000);
     });
 }
 
@@ -3525,5 +3527,5 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
 });
-}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1e83c3ab.js","/")
+}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_5a2a680c.js","/")
 },{"buffer":3,"fsovz6":2,"object.values":30}]},{},[33])
