@@ -56,6 +56,8 @@ function getTemplate(todo) {
 function toggleMenu() {
     $('.main-nav')
         .add('.burger')
+        .add('.headline')
+        .add('#particles-js')
         .toggleClass('open');
     $('html')
         .add('body')

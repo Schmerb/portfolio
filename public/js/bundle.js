@@ -2994,7 +2994,7 @@ function getTemplate(todo) {
 // Toggles the side menu
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function toggleMenu() {
-    $('.main-nav').add('.burger').toggleClass('open');
+    $('.main-nav').add('.burger').add('.headline').add('#particles-js').toggleClass('open');
     $('html').add('body').toggleClass('no-scroll');
 }
 
@@ -3540,5 +3540,5 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
 });
-}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_87ccbaa5.js","/")
+}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1184423b.js","/")
 },{"buffer":3,"fsovz6":2,"object.values":30}]},{},[33])

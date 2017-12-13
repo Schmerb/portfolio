@@ -63,12 +63,14 @@
         }
     }
     a.button {
+        @extend %transition;
         display: inline-block;
         position: relative;
         width: 140px;
         height: 40px;
         line-height: 40px;
         text-align: center;
+        vertical-align: middle;
         border: 1px solid $blue;
         border-radius: 5px;
         &:hover {
@@ -78,21 +80,29 @@
                 fill: $purp;
             }
         }
-        &.crypto {
-            span {
-                display: inline-block;
-                margin-right: 15px;
-            }
-            svg {
-                @include middleR(2px);
-            }
-        }
         span {
-            display: inline-block;
-            margin-right: 15px;
+            @include middleL(30px);
         }
         svg {
-            @include middleR(10px);
+            @include middleR(30px);
+        }
+        &.crypto {
+            &.client {
+                span {
+                    @include middleL(10px);
+                }
+                svg {
+                    @include middleR(10px);
+                }
+            }
+            &.api {
+                span {
+                    @include middleL(20px);
+                }
+                svg {
+                    @include middleR(15px);
+                }
+            }
         }
     }
     .live-link {
@@ -139,7 +149,7 @@
     }
     // Laptop
     .laptop-img-wrap { // on left
-        @include transition(1s, all, ease-in-out, 0.6s);
+        @include transition(1s, all, ease-in-out, 1.4s);
         position: absolute;
         bottom: -100px;
         left: -100px;
@@ -169,7 +179,7 @@
     }
     // Mobile
     .mobile-img-wrap { // on right
-        @include transition(1s, all, ease-in-out, 0.8s);
+        @include transition(1s, all, ease-in-out, 1.8s);
         position: absolute;
         bottom: -100px;
         right: -100px;

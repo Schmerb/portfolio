@@ -6,6 +6,7 @@ canvas {
 /* ---- particles.js container ---- */
   
 #particles-js {
+    @extend %transition;
     position: absolute;
     left: 0;
     top: 0;
@@ -15,12 +16,26 @@ canvas {
     background-image: url("/assets/images/compressed/nicolas-cool-111447-compressor.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 50% 50%; 
+    background-position: 60% 50%; 
+    @include mediaMin($tablet) {
+        background-position: 65% 50%; 
+    }
+    @include mediaMin($desktop) {
+        background-position: 85% 50%;   
+    }
+    @include mediaMin(1450px) {
+        background-position: 100% 50%; 
+    }
 
     &::before {
         @extend %cover;
         content: '';
         background-color: rgba(black, 0.2);
         pointer-events: none;
+    }
+    &.open {
+        // @include transform(scale(1.1));
+        // filter: blur(20px);
+        // overflow: hidden;
     }
 } 

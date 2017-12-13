@@ -15,7 +15,7 @@
     overflow-x: hidden;
     nav {
         position: relative;
-        z-index: 1;
+        // z-index: 1;
         text-align: center;
         li {
             display: block;
@@ -23,16 +23,17 @@
     }
     .headline {
         @extend %center;
-        top: 40px;
+        // left: 55%;
+        top: 80px;
         width: 100%;
         text-align: center;
         pointer-events: none;
         z-index: 1;
         @include mediaMin($iphone6) {
-            top: 50px;
+            top: 100px;
         }
         @include mediaMin($iphone6P) {
-            top: 100px;
+            top: 200px;
         }
         @media screen and (max-width: $tablet) and (orientation: landscape)  {
             top: 50px;
@@ -53,7 +54,11 @@
         .skills-overview {
             font-size: 18px;
         }
-    }   
+        // &.open {
+        //     @include transform(scale(1.1));
+        //     filter: blur(20px);
+        // }
+    }    
     .checkout-btn {
         @extend %center;
         background-color: rgba(white,0.75); 

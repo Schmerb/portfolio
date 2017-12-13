@@ -30,8 +30,9 @@
     @extend %cover;
     @include benz-transition-2(0.4s);
     position: fixed;
-    background-color: rgba($purp,0.90);
-    // background: linear-gradient(-45deg, rgba($lightpurp,0.95) -50%, rgba($purp,0.99));
+    // background-color: rgba($purp,0.90);
+    background: linear-gradient(-45deg, rgba($lightpurp,0.95) -50%, rgba($purp,0.99));
+    // background-color: rgba(#262626,0.90);
     height: 100vh;
     left: 100%;
     padding-top: 50px;
