@@ -21,14 +21,14 @@
         &:nth-of-type(1n) {
             transition-delay: 0.5s;
             @include mediaMin($desktop) {
-                transition-delay: 1.5s;
+                transition-delay: 1s;
             }
         }
         &:nth-of-type(2n) {
             @include transform(translateX(200px));
             transition-delay: 0.6s;
             @include mediaMin($desktop) {
-                transition-delay: 1.6s;
+                transition-delay: 1.1s;
             }
         }
         &.slide-in, &.already-visited {
