@@ -27,6 +27,7 @@
         @extend %abs-middle;
         @include animation(spin 2s linear 0s infinite reverse);
         fill: coral;
+        fill: #50ffc4;
         width: 100px;
         height: 100px;
         &.fade {
