@@ -3348,6 +3348,18 @@ function contactFormSubmit() {
     });
 }
 
+function copyTextBtnClick() {
+    $('.copy-btn').on('click', function (e) {
+        e.preventDefault();
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($('.my-email').text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        // show copied to clipboard message
+    });
+}
+
 // Footer
 function upArrowClick() {
     $(UP_ARROW).on('click', function (e) {
@@ -3388,6 +3400,7 @@ function navClicks() {
 function bodyClicks() {
     contactFormFocus();
     contactFormSubmit();
+    copyTextBtnClick();
 }
 
 function footerClicks() {
@@ -3540,5 +3553,5 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
 });
-}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6656e0ee.js","/")
+}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_739ddd9.js","/")
 },{"buffer":3,"fsovz6":2,"object.values":30}]},{},[33])

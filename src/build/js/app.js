@@ -434,6 +434,18 @@ function contactFormSubmit() {
     });
 }
 
+function copyTextBtnClick() {
+    $('.copy-btn').on('click', e => {
+        e.preventDefault();
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($('.my-email').text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        // show copied to clipboard message
+    });
+}
+
 // Footer
 function upArrowClick() {
     $(UP_ARROW).on('click', function(e) {
@@ -474,6 +486,7 @@ function navClicks() {
 function bodyClicks() {
     contactFormFocus();
     contactFormSubmit();
+    copyTextBtnClick();
 }
 
 function footerClicks() {

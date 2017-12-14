@@ -22,6 +22,20 @@
             top: 0;
             opacity: 1;
         }
+        button {
+            background-color: transparent;
+            cursor: pointer;
+            border: none
+        }
+        .icon-clipboard-icon {
+            position: relative;
+            top: 9px;
+        }
+        .copy-success-msg {
+            position: fixed;
+            z-index: 100;
+            border: 1px solid blue;
+        }
     }
     h2 {
         font-size: 36px;
