@@ -3343,20 +3343,25 @@ function contactFormFocus() {
 function contactFormSubmit() {
     $(CONTACT_FORM).on('submit', function (e) {
         e.preventDefault();
-        // $(SUBMIT_BTN).removeClass('error');
         sendEmail($(this));
     });
 }
 
 function copyTextBtnClick() {
     $('.copy-btn').on('click', function (e) {
+        var _this = this;
+
         e.preventDefault();
         var $temp = $("<input>");
-        $("body").append($temp);
+        $(".contact-header").prepend($temp);
         $temp.val($('.my-email').text()).select();
         document.execCommand("copy");
         $temp.remove();
         // show copied to clipboard message
+        $(this).addClass('copied');
+        setTimeout(function () {
+            $(_this).removeClass('copied');
+        }, 3000);
     });
 }
 
@@ -3553,5 +3558,5 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
 });
-}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_739ddd9.js","/")
+}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9b09d402.js","/")
 },{"buffer":3,"fsovz6":2,"object.values":30}]},{},[33])

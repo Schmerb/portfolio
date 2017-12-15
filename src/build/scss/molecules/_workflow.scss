@@ -23,7 +23,7 @@
         margin: 80px auto;
     }
     li {
-        @include transition(0.5s, all, ease-in-out, 0.5s);
+        @include transition(0.5s, transform, ease-in-out, 0.5s);
         @include transform(translate(200px, 200px));
         display: block;
         width: 80%;
@@ -39,6 +39,7 @@
         }
         @include mediaMin($tablet) {
             @include transition(1s);
+            @include transition(1s, transform, ease-in-out, 0s);
             width: 20%;
             margin-top: 40px;
             float: left;

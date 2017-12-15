@@ -429,20 +429,23 @@ function contactFormFocus() {
 function contactFormSubmit() {
     $(CONTACT_FORM).on('submit', function(e) {
         e.preventDefault();
-        // $(SUBMIT_BTN).removeClass('error');
         sendEmail($(this));
     });
 }
 
 function copyTextBtnClick() {
-    $('.copy-btn').on('click', e => {
+    $('.copy-btn').on('click', function(e) {
         e.preventDefault();
         var $temp = $("<input>");
-        $("body").append($temp);
+        $(".contact-header").prepend($temp);
         $temp.val($('.my-email').text()).select();
         document.execCommand("copy");
         $temp.remove();
         // show copied to clipboard message
+        $(this).addClass('copied');
+        setTimeout(() => {
+            $(this).removeClass('copied');
+        }, 3000);
     });
 }
 
