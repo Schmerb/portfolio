@@ -23,7 +23,7 @@
         @include transition(0.5s, opacity, ease-in-out, 0s);
         content: '\f14a';
         font-family: FontAwesome;
-        color: white;
+        color: rgba(43, 160, 43, 0.71);
         width: 20px;
         opacity: 0;
         top: 22px;
@@ -49,7 +49,8 @@
         @include transitions(all 0.5s ease-in-out 0.3s, color 0.6s ease-in-out 0s);
         content: 'Copied to Clipboard';
         position: absolute;
-        background-color: #5be695;
+        // background-color: #5be695;
+        background-color: rgba(91,230,149,0.58);
         color: transparent;
         left: 10px;
         top: 20px;
@@ -57,13 +58,14 @@
         height: 10px;
         line-height: 60px;
         border-radius: 100px;
-        border-bottom-left-radius: 0px;
+        border-bottom-left-radius: 10px;
         box-shadow: -7px 7px 20px rgba(0,0,0,.4);
         overflow: hidden;
         opacity: 0;
         z-index: 20;
         cursor: default;
         @include mediaMax($tablet - 1) {
+            background-color: rgba(91,230,149,0.9);
             position: fixed;
             left: 0;
             top: -30px;
@@ -80,7 +82,7 @@
         }
         &::after {
             @include transitions(all 0.3s ease-in-out 0s, color 0.6s ease-in-out 0.2s);
-            color: white;
+            color: rgba(43, 160, 43, 0.71);
             font-size: 20px;
             font-weight: bolder;
             height: 60px;
