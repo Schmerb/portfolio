@@ -41,10 +41,10 @@ app.use(function (req, res, next) {
 // ROUTER
 app.use(require('routes'));
 
-// lets encrypt certs
-// app.get('/.well-known/acme-challenge/GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w', (req, res) => {
-//   res.send('GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w.r9-HcCoTZgMpW4CXYteG58b6mRvZFzcFinana_zn71Q');
-// });
+// SSL CERT
+app.get('/.well-known/acme-challenge/GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w', (req, res) => {
+  res.send('GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w.r9-HcCoTZgMpW4CXYteG58b6mRvZFzcFinana_zn71Q');
+});
 
 // fallback error message for all non-existant endpoints
 app.use('*', (req, res) => {
