@@ -3340,14 +3340,14 @@ function contactFormFocus() {
         }
     });
 }
-
+// form Submit
 function contactFormSubmit() {
     $(CONTACT_FORM).on('submit', function (e) {
         e.preventDefault();
         sendEmail($(this));
     });
 }
-
+// copies email address to clipboard
 function copyTextBtnClick() {
     $('.copy-btn').on('click', function (e) {
         var _this = this;
@@ -3358,10 +3358,20 @@ function copyTextBtnClick() {
         $temp.val($('.my-email').text()).select();
         document.execCommand("copy");
         $temp.remove();
-        // show copied to clipboard message
-        $(this).addClass('copied');
+
+        // enable display
+        $(this).addClass('show');
+        setTimeout(function () {
+            // animate-in copy success message
+            $(_this).addClass('copied');
+        }, 100);
+
         setTimeout(function () {
             $(_this).removeClass('copied');
+            setTimeout(function () {
+                // disable display
+                $(_this).removeClass('show');
+            }, 800);
         }, 3000);
     });
 }
@@ -3559,5 +3569,5 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
 });
-}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6dee2a67.js","/")
+}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_efc8d178.js","/")
 },{"buffer":3,"fsovz6":2,"object.values":30}]},{},[33])

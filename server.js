@@ -1,13 +1,13 @@
 'use strict';
 
-const express      = require('express');
-const bodyParser   = require('body-parser');
-const engine       = require('ejs-mate');
-const cookieParser = require('cookie-parser');
-const morgan       = require('morgan');
-const path         = require('path');
+const express      = require('express'),
+      bodyParser   = require('body-parser'),
+      engine       = require('ejs-mate'),
+      cookieParser = require('cookie-parser'),
+      morgan       = require('morgan'),
+      path         = require('path');
 
-const router = require('routes');
+
 
 const { PORT } = require('./config');
 
@@ -38,12 +38,13 @@ app.use(function (req, res, next) {
   next();
 });
 
+// ROUTER
+app.use(require('routes'));
 
-app.use(router);
-
-app.get('/.well-known/acme-challenge/GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w', (req, res) => {
-  res.send('GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w.r9-HcCoTZgMpW4CXYteG58b6mRvZFzcFinana_zn71Q');
-});
+// lets encrypt certs
+// app.get('/.well-known/acme-challenge/GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w', (req, res) => {
+//   res.send('GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w.r9-HcCoTZgMpW4CXYteG58b6mRvZFzcFinana_zn71Q');
+// });
 
 // fallback error message for all non-existant endpoints
 app.use('*', (req, res) => {

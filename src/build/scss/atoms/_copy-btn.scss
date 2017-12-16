@@ -1,0 +1,108 @@
+// // // // // // // // // //
+//
+//      Copy Button / Message
+//
+// // // // // // // // // //
+
+.copy-btn {
+    position: relative;
+    background-color: transparent;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    // checkbox
+    &::before, &::after {
+        display: none;
+    }
+    &.show {
+        &::before, &::after {
+            display: initial;
+        }
+    }
+    &::before {
+        @include transition(0.5s, opacity, ease-in-out, 0s);
+        content: '\f14a';
+        font-family: FontAwesome;
+        color: white;
+        width: 20px;
+        opacity: 0;
+        top: 22px;
+        right: 0;
+        margin-left: 110px;
+        z-index: 21;
+        cursor: default;
+        @include mediaMax($tablet - 1) {
+            @include center;
+            position: fixed;
+        }
+        @include mediaMin($tablet) {
+            @include transition(0.4s, opacity, ease-in-out, 0s);
+            @include transform(none);
+            position: absolute;
+            top: -38px;
+            left: 52px;
+            margin-left: 0;
+        }
+    }
+    // green message box
+    &::after {
+        @include transitions(all 0.5s ease-in-out 0.3s, color 0.6s ease-in-out 0s);
+        content: 'Copied to Clipboard';
+        position: absolute;
+        background-color: #5be695;
+        color: transparent;
+        left: 10px;
+        top: 20px;
+        width: 100px;
+        height: 10px;
+        line-height: 60px;
+        border-radius: 100px;
+        border-bottom-left-radius: 0px;
+        box-shadow: -7px 7px 20px rgba(0,0,0,.4);
+        overflow: hidden;
+        opacity: 0;
+        z-index: 20;
+        cursor: default;
+        @include mediaMax($tablet - 1) {
+            position: fixed;
+            left: 0;
+            top: -30px;
+            width: 100%;
+            border-radius: 0px;
+            opacity: 1;
+            box-shadow: 0 7px 20px rgba(0,0,0,.4);
+        }
+    }
+    &.copied {
+        &::before {
+            @include transition(0.5s, opacity, ease-in-out, 0.35s);
+            opacity: 1;
+        }
+        &::after {
+            @include transitions(all 0.5s ease-in-out 0s, color 0.6s ease-in-out 0.2s);
+            color: white;
+            font-size: 20px;
+            font-weight: bolder;
+            height: 60px;
+            opacity: 1;
+            @include mediaMax($tablet - 1) {
+                top: 0;
+            }
+            @include mediaMin($tablet) {   
+                left: 50px;
+                top: -60px;
+                width: 230px;
+            }
+        }
+    }
+}
+
+.icon-clipboard-icon {
+    position: relative;
+    top: 9px;
+}
+.copy-success-msg {
+    @extend %center;
+    z-index: 100;
+    border: 1px solid blue;
+}

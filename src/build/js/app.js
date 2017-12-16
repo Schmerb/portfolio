@@ -425,14 +425,14 @@ function contactFormFocus() {
         }
     });
 }
-
+// form Submit
 function contactFormSubmit() {
     $(CONTACT_FORM).on('submit', function(e) {
         e.preventDefault();
         sendEmail($(this));
     });
 }
-
+// copies email address to clipboard
 function copyTextBtnClick() {
     $('.copy-btn').on('click', function(e) {
         e.preventDefault();
@@ -441,10 +441,20 @@ function copyTextBtnClick() {
         $temp.val($('.my-email').text()).select();
         document.execCommand("copy");
         $temp.remove();
-        // show copied to clipboard message
-        $(this).addClass('copied');
+
+        // enable display
+        $(this).addClass('show'); 
+        setTimeout(() => {
+            // animate-in copy success message
+            $(this).addClass('copied');
+        }, 100);
+
         setTimeout(() => {
             $(this).removeClass('copied');
+            setTimeout(() => {
+                // disable display
+                $(this).removeClass('show');
+            }, 800);
         }, 3000);
     });
 }
@@ -524,5 +534,4 @@ $(function () {
     footerClicks();
 
     init();
-
 });
