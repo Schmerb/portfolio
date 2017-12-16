@@ -3083,10 +3083,11 @@ function sendEmail($form) {
 function smoothScroll(target) {
     var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1200;
     var offset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    var easing = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "swing";
 
     $('body, html').animate({
         scrollTop: $(target).offset().top - offset
-    }, duration);
+    }, duration, easing);
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -3558,5 +3559,5 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
 });
-}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9b09d402.js","/")
+}).call(this,require("fsovz6"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_94fedee5.js","/")
 },{"buffer":3,"fsovz6":2,"object.values":30}]},{},[33])

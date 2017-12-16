@@ -164,10 +164,10 @@ function sendEmail($form) {
 // Gives a smooth animation to page navigation bringing the 
 // target element to the top of the window
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-function smoothScroll(target, duration = 1200, offset = 0) {
+function smoothScroll(target, duration = 1200, offset = 0, easing = "swing") {
     $('body, html').animate({
         scrollTop: $(target).offset().top - offset
-    }, duration);
+    }, duration, easing);
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
