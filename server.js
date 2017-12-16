@@ -41,8 +41,8 @@ app.use(function (req, res, next) {
 
 app.use(router);
 
-app.get('/.well-known/acme-challenge/AINnIcvMODkTMkHW3IB8Kzck3rLE94owKBoDOAIC-zw', (req, res) => {
-  res.send('AINnIcvMODkTMkHW3IB8Kzck3rLE94owKBoDOAIC-zw.r9-HcCoTZgMpW4CXYteG58b6mRvZFzcFinana_zn71Q');
+app.get('/.well-known/acme-challenge/GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w', (req, res) => {
+  res.send('GUzNCUB6tp4SXOfEVgUN2LvtgmY_chtlNg15zKlT78w.r9-HcCoTZgMpW4CXYteG58b6mRvZFzcFinana_zn71Q');
 });
 
 // fallback error message for all non-existant endpoints
