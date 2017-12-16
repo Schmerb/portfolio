@@ -63,7 +63,7 @@
         }
     }
     a.button {
-        @extend %transition;
+        @include transition(0.15s);
         display: inline-block;
         position: relative;
         width: 140px;
@@ -84,6 +84,7 @@
             @include middleL(30px);
         }
         svg {
+            @include transition(0.15s);
             @include middleR(30px);
         }
         &.crypto {
