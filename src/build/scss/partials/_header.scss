@@ -15,7 +15,6 @@
     overflow-x: hidden;
     nav {
         position: relative;
-        // z-index: 1;
         text-align: center;
         li {
             display: block;
@@ -23,7 +22,6 @@
     }
     .headline {
         @extend %center;
-        // left: 55%;
         top: 80px;
         width: 100%;
         text-align: center;
@@ -54,17 +52,12 @@
         .skills-overview {
             font-size: 18px;
         }
-        // &.open {
-        //     @include transform(scale(1.1));
-        //     filter: blur(20px);
-        // }
     }    
     .checkout-btn {
         @extend %center;
         background-color: rgba(white,0.85); 
         color: #e69839;
         font-size: 26px;
-        // font-weight: bolder;
         bottom: 5%;
         width: 90%;
         max-width: 280px;
