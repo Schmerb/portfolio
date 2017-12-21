@@ -45,9 +45,9 @@
         margin-bottom: 60px;
         li {
             @include transform(translateY(100px));
-            @include transition(0.8s, all, ease-in-out, 0.3s);
+            @include transition(0.6s, all, ease-in-out, 0.3s);
             @include mediaMin($desktop) {
-                @include transition(0.8s, all, ease-in-out, 1s);
+                @include transition(0.6s, all, ease-in-out, 1s);
             }
             opacity: 0;
             &.btn-left {
@@ -126,7 +126,7 @@
     }
     // Desktop
     .desktop-img-wrap {
-        @include transition(1s, all, ease-in-out, 1s);
+        @include transition(0.8s, all, ease-in-out, 1s);
         position: relative;
         bottom: -100px;
         width: 75%;
@@ -150,7 +150,7 @@
     }
     // Laptop
     .laptop-img-wrap { // on left
-        @include transition(1s, all, ease-in-out, 1.2s);
+        @include transition(0.8s, all, ease-in-out, 1.2s);
         position: absolute;
         bottom: -100px;
         left: -100px;
@@ -180,7 +180,7 @@
     }
     // Mobile
     .mobile-img-wrap { // on right
-        @include transition(1s, all, ease-in-out, 1.6s);
+        @include transition(0.8s, all, ease-in-out, 1.6s);
         position: absolute;
         bottom: -100px;
         right: -100px;
