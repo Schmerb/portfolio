@@ -1,0 +1,105 @@
+// // // // // // // // // //
+//
+//      Production Images
+//
+// // // // // // // // // //
+
+.projects-container {
+    .shadow {
+        position: absolute;
+        bottom: -10%;
+        left: 0;
+        z-index: -1;
+    }
+    // Desktop
+    .desktop-img-wrap {
+        @include transition(0.8s, all, ease-in-out, 1s);
+        position: relative;
+        bottom: -100px;
+        width: 75%;
+        margin-left: 20px;
+        opacity: 0;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    // Laptop
+    .laptop-img-wrap { // on left
+        @include transition(0.8s, all, ease-in-out, 2.1s);
+        position: absolute;
+        bottom: -100px;
+        left: -100px;
+        width: 55%;
+        margin: 0 auto;
+        opacity: 0;
+        &.reverse {
+            left: auto;
+            right: -100px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    // Mobile
+    .mobile-img-wrap { // on right
+        @include transition(0.8s, all, ease-in-out, 2.5s);
+        position: absolute;
+        bottom: -100px;
+        right: -100px;
+        min-width: 60px;
+        width: 15%;
+        opacity: 0;
+        &.reverse {
+            right: auto;
+            left: -100px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    // target
+    .prod-images {
+        position: relative;
+        width: 100%;
+        // Animations
+        &.slide-in, &.already-visible {
+            // Desktop
+            .desktop-img-wrap {
+                bottom: 15px;
+                right: -15%;
+                opacity: 1;
+                &.reverse {
+                    right: -5%;
+                }
+            }
+            // Laptop
+            .laptop-img-wrap { // on left
+                bottom: 0;
+                left: 5px;
+                opacity: 1;
+                &.reverse { // on right
+                    left: auto;
+                    right: 5px;
+                }
+            }
+            // Mobile
+            .mobile-img-wrap { // on right
+                bottom: 0;
+                right: 5px;
+                opacity: 1;
+                &.reverse { // on left
+                    left: 5px;
+                    right: auto;
+                }
+            }
+        }
+        &.already-visible {
+            > div {
+                @include transition(0s);
+            }
+        }
+    }
+}
