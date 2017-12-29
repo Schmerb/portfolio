@@ -99,9 +99,7 @@ gulp.task('build_js', () => {
 });
 
 gulp.task('watch_js', () => {
-	return watch(JS_SRC, () => {
-        gulp.start('build_js');
-    });
+	return watch(JS_SRC, () => gulp.start('build_js'));
 })
 
 

@@ -176,7 +176,7 @@ function smoothScroll(target, duration = 1200, offset = 0, easing = "swing") {
 function checkSizeHandler() {
     checkSize();
     $(window).resize(checkSize); 
-}
+} 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // Called by checkSizeHandler to set state if mobile view
